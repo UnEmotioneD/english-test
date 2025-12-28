@@ -64,57 +64,37 @@ public class EnglishController {
     }
   }
 
-  public void importWord() {
-    BufferedReader br = null;
-    try {
-      FileReader fr = new FileReader("allDB.txt");
-      br = new BufferedReader(fr);
-
-      String newWord;
-      while ((newWord = br.readLine()) != null) {
-        String[] wordStrArr = newWord.split("/");
-
-        list.add(new Word(wordStrArr[0], wordStrArr[1], wordStrArr[2]));
-      }
-
-    } catch (FileNotFoundException e1) {
-      System.out.println("File not found");
-    } catch (IOException e) {
-      System.out.println("I/O Error");
-    } finally {
-      try {
-        assert br != null;
-        br.close();
-      } catch (IOException e3) {
-        System.out.println("br.close() I/O Error");
-      }
-    }
+  public void readWordFile() {
+    String fileWithWords = "allDb.txt";
+    wordList = readFile(fileWithWords);
   }
 
-  public void importFailWord() {
-    BufferedReader br = null;
-    try {
-      FileReader fr = new FileReader("failDB.txt");
-      br = new BufferedReader(fr);
+  public void readFailedWord() {
+    String fileWithFailedWords = "failDb.txt";
+    failList = readFile(fileWithFailedWords);
+  }
 
-      String newWord;
-      while ((newWord = br.readLine()) != null) {
-        String[] WordStrArr = newWord.split("/");
+  public ArrayList<Word> readFile(String fileName) {
+    ArrayList<Word> list = new ArrayList<>();
 
-        failList.add(new Word(WordStrArr[0], WordStrArr[1], WordStrArr[2]));
+    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+      String line;
+
+      while ((line = br.readLine()) != null) {
+        // split line by slash
+        // put it into String arr
+        // construct Word object with it
+        // put Word obj into ArrayList
+        String[] wordArr = line.split("/");
+        list.add(new Word(wordArr[0], wordArr[1], wordArr[2]));
       }
-    } catch (FileNotFoundException e1) {
-      System.out.println("File not found");
+
+    } catch (FileNotFoundException e) {
+      System.out.println(fileName + " not found.");
     } catch (IOException e) {
       System.out.println("I/O Error");
-    } finally {
-      try {
-        assert br != null;
-        br.close();
-      } catch (IOException e3) {
-        System.out.println("br.close() I/O Error");
-      }
     }
+    return list;
   }
 
   public void search() {
