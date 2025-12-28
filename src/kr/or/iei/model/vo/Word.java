@@ -5,7 +5,7 @@ public class Word {
   private String def1;
   private String def2;
 
-  public Word(String word, String def1, String def2, int j) {
+  public Word() {
     super();
   }
 
