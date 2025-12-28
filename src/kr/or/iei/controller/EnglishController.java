@@ -10,37 +10,36 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import kr.or.iei.model.vo.Word;
-import kr.or.iei.model.vo.WordWithIndex;
 import kr.or.iei.viewer.EnglishViewer;
 
 public class EnglishController {
   Scanner sc;
-  EnglishViewer viewer;
+  EnglishViewer engViewer;
+  SearchController searchCon;
 
   ArrayList<Word> wordList;
   ArrayList<Word> failList;
   ArrayList<Word> testList;
-  ArrayList<WordWithIndex> wordsWithIndex;
 
   public EnglishController() {
     sc = new Scanner(System.in);
-    viewer = new EnglishViewer();
+    engViewer = new EnglishViewer();
+    searchCon = new SearchController();
 
     wordList = new ArrayList<>();
     failList = new ArrayList<>();
     testList = new ArrayList<>();
-    wordsWithIndex = new ArrayList<>();
   }
 
   public void mainMethod() {
     readWordFile();
 
     while (true) {
-      int menu = viewer.menu();
+      int menu = engViewer.menu();
 
       switch (menu) {
         case 1:
-          search();
+          searchCon.search();
           break;
         case 2:
           add();
@@ -96,107 +95,15 @@ public class EnglishController {
     return list;
   }
 
-  public void search() {
-    ArrayList<Word> list = new ArrayList<>();
-
-    boolean found = false;
-    String searchWord;
-    while (!found) {
-      searchWord = viewer.searchViewer();
-      // Cancel when typed "c"
-      if (searchWord.equalsIgnoreCase("c")) {
-        System.out.println("Canceling Search");
-        break;
-      }
-
-      int chosenIndex = -1;
-      switch (searchWord.length()) {
-        case 1:
-          chosenIndex = viewer.searchView(oneChar(searchWord));
-          break;
-        case 2:
-          chosenIndex = viewer.searchView(twoChar(searchWord.charAt(0), searchWord.charAt(1)));
-          break;
-        case 3:
-          chosenIndex =
-              viewer.searchView(
-                  threeChar(searchWord.charAt(0), searchWord.charAt(1), searchWord.charAt(2)));
-          break;
-        default:
-          for (Word word : list) {
-            if (word.getWord().equalsIgnoreCase(searchWord)
-                || word.getDef1().equalsIgnoreCase(searchWord)
-                || word.getDef2().equalsIgnoreCase(searchWord)) {
-              System.out.println(word);
-              found = true;
-            } else {
-              System.out.println("No such word");
-            }
-            break;
-          }
-      } // switch
-      if (chosenIndex != -1) {
-        viewer.showChosenIndex(chosenIndex - 1, wordsWithIndex);
-      }
-    }
-  }
-
-  public ArrayList<WordWithIndex> oneChar(String searchWord) {
-    ArrayList<Word> list = new ArrayList<>();
-
-    int i = 0;
-    for (Word word : list) {
-      if (word.getWord().charAt(0) == searchWord.charAt(0)) {
-        i++;
-        wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), i));
-      }
-    }
-    return wordsWithIndex;
-  }
-
-  public ArrayList<WordWithIndex> twoChar(char firstChar, char secondChar) {
-    ArrayList<Word> list = new ArrayList<>();
-
-    wordsWithIndex.clear();
-    int j = 0;
-    for (Word word : list) {
-      for (int k = 0; k < word.getWord().length() - 1; k++) {
-        if (word.getWord().charAt(k) == firstChar && word.getWord().charAt(k + 1) == secondChar) {
-          j++;
-          wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), j));
-        }
-      }
-    }
-    return wordsWithIndex;
-  }
-
-  public ArrayList<WordWithIndex> threeChar(char firstChar, char secondChar, char thirdChar) {
-    ArrayList<Word> list = new ArrayList<>();
-
-    wordsWithIndex.clear();
-    int j = 0;
-    for (Word word : list) {
-      for (int k = 0; k < word.getWord().length() - 2; k++) {
-        if (word.getWord().charAt(k) == firstChar
-            && word.getWord().charAt(k + 1) == secondChar
-            && word.getWord().charAt(k + 2) == thirdChar) {
-          j++;
-          wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), j));
-        }
-      }
-    }
-    return wordsWithIndex;
-  }
-
   public void add() {
     BufferedWriter bw = null;
     try {
       bw = new BufferedWriter(new FileWriter("allDB.txt", true));
 
       bw.newLine();
-      bw.write(viewer.addViewer("word") + "/");
-      bw.write(viewer.addViewer("definition (1/2)") + "/");
-      bw.write(viewer.addViewer("definition (2/2)"));
+      bw.write(engViewer.addViewer("word") + "/");
+      bw.write(engViewer.addViewer("definition (1/2)") + "/");
+      bw.write(engViewer.addViewer("definition (2/2)"));
 
       System.out.println("New word and definitions successfully added");
 
@@ -218,8 +125,8 @@ public class EnglishController {
     System.out.println(failList);
 
     Random random = new Random();
-    String selWord = viewer.startTest();
-    int ranNum = viewer.random();
+    String selWord = engViewer.startTest();
+    int ranNum = engViewer.random();
     int[] ran = new int[ranNum];
 
     for (int j = 0; j < ran.length; j++) {
@@ -234,7 +141,7 @@ public class EnglishController {
     for (int j = 0; j < ranNum; j++) {
       if (selWord.equals("e")) {
         System.out.println(list.get(ran[j]).getDef1() + "\t" + list.get(ran[j]).getDef2());
-        String answer = viewer.randomTest();
+        String answer = engViewer.randomTest();
 
         if (!answer.equals(list.get(ran[j]).getWord())) {
           testList.add(list.get(ran[j]));
@@ -242,7 +149,7 @@ public class EnglishController {
 
       } else if (selWord.equals("k")) {
         System.out.println(list.get(ran[j]).getWord());
-        String answer = viewer.randomTest();
+        String answer = engViewer.randomTest();
 
         if (!answer.equals(list.get(ran[j]).getDef1())
             || !answer.equals(list.get(ran[j]).getDef2())) {
@@ -285,7 +192,7 @@ public class EnglishController {
   public void edit() {
     ArrayList<Word> list = new ArrayList<>();
 
-    String editWord = viewer.editViewer();
+    String editWord = engViewer.editViewer();
     boolean found = false;
 
     if (editWord.equalsIgnoreCase("c")) {
