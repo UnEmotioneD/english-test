@@ -20,24 +20,23 @@ public class EnglishController {
   ArrayList<Word> wordList;
   ArrayList<Word> failList;
   ArrayList<Word> testList;
-  ArrayList<WordWithIndex> continueSearchList;
   ArrayList<WordWithIndex> wordsWithIndex;
-  Scanner sc;
-  EnglishViewer view;
 
   public EnglishController() {
-    list = new ArrayList<>();
-    searchList = new ArrayList<>();
-    continueSearchList = new ArrayList<>();
-    wordsWithIndex = new ArrayList<>();
     sc = new Scanner(System.in);
-    view = new EnglishViewer();
+    viewer = new EnglishViewer();
+
+    wordList = new ArrayList<>();
+    failList = new ArrayList<>();
+    testList = new ArrayList<>();
+    wordsWithIndex = new ArrayList<>();
   }
 
   public void mainMethod() {
+    readWordFile();
+
     while (true) {
-      importWord();
-      int menu = view.menu();
+      int menu = viewer.menu();
 
       switch (menu) {
         case 1:
@@ -98,10 +97,12 @@ public class EnglishController {
   }
 
   public void search() {
+    ArrayList<Word> list = new ArrayList<>();
+
     boolean found = false;
     String searchWord;
     while (!found) {
-      searchWord = view.searchViewer();
+      searchWord = viewer.searchViewer();
       // Cancel when typed "c"
       if (searchWord.equalsIgnoreCase("c")) {
         System.out.println("Canceling Search");
@@ -111,14 +112,14 @@ public class EnglishController {
       int chosenIndex = -1;
       switch (searchWord.length()) {
         case 1:
-          chosenIndex = view.searchView(oneChar(searchWord));
+          chosenIndex = viewer.searchView(oneChar(searchWord));
           break;
         case 2:
-          chosenIndex = view.searchView(twoChar(searchWord.charAt(0), searchWord.charAt(1)));
+          chosenIndex = viewer.searchView(twoChar(searchWord.charAt(0), searchWord.charAt(1)));
           break;
         case 3:
           chosenIndex =
-              view.searchView(
+              viewer.searchView(
                   threeChar(searchWord.charAt(0), searchWord.charAt(1), searchWord.charAt(2)));
           break;
         default:
@@ -135,12 +136,14 @@ public class EnglishController {
           }
       } // switch
       if (chosenIndex != -1) {
-        view.showChosenIndex(chosenIndex - 1, wordsWithIndex);
+        viewer.showChosenIndex(chosenIndex - 1, wordsWithIndex);
       }
     }
   }
 
   public ArrayList<WordWithIndex> oneChar(String searchWord) {
+    ArrayList<Word> list = new ArrayList<>();
+
     int j = 0;
     for (Word word : list) {
       if (word.getWord().charAt(0) == searchWord.charAt(0)) {
@@ -152,11 +155,13 @@ public class EnglishController {
   }
 
   public ArrayList<WordWithIndex> twoChar(char firstChar, char secondChar) {
+    ArrayList<Word> list = new ArrayList<>();
+
     wordsWithIndex.clear();
     int j = 0;
     for (Word word : list) {
-      for (int i = 0; i < word.getWord().length() - 1; i++) {
-        if (word.getWord().charAt(i) == firstChar && word.getWord().charAt(i + 1) == secondChar) {
+      for (int k = 0; k < word.getWord().length() - 1; k++) {
+        if (word.getWord().charAt(k) == firstChar && word.getWord().charAt(k + 1) == secondChar) {
           j++;
           wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), j));
         }
@@ -166,6 +171,8 @@ public class EnglishController {
   }
 
   public ArrayList<WordWithIndex> threeChar(char firstChar, char secondChar, char thirdChar) {
+    ArrayList<Word> list = new ArrayList<>();
+
     wordsWithIndex.clear();
     int j = 0;
     for (Word word : list) {
@@ -187,9 +194,9 @@ public class EnglishController {
       bw = new BufferedWriter(new FileWriter("allDB.txt", true));
 
       bw.newLine();
-      bw.write(view.addViewer("word") + "/");
-      bw.write(view.addViewer("definition (1/2)") + "/");
-      bw.write(view.addViewer("definition (2/2)"));
+      bw.write(viewer.addViewer("word") + "/");
+      bw.write(viewer.addViewer("definition (1/2)") + "/");
+      bw.write(viewer.addViewer("definition (2/2)"));
 
       System.out.println("New word and definitions successfully added");
 
@@ -206,11 +213,13 @@ public class EnglishController {
   }
 
   public void test() {
+    ArrayList<Word> list = new ArrayList<>();
+
     System.out.println(failList);
 
     Random random = new Random();
-    String selWord = view.startTest();
-    int ranNum = view.random();
+    String selWord = viewer.startTest();
+    int ranNum = viewer.random();
     int[] ran = new int[ranNum];
 
     for (int i = 0; i < ran.length; i++) {
@@ -225,7 +234,7 @@ public class EnglishController {
     for (int i = 0; i < ranNum; i++) {
       if (selWord.equals("e")) {
         System.out.println(list.get(ran[i]).getDef1() + "\t" + list.get(ran[i]).getDef2());
-        String answer = view.randomTest();
+        String answer = viewer.randomTest();
 
         if (!answer.equals(list.get(ran[i]).getWord())) {
           testList.add(list.get(ran[i]));
@@ -233,7 +242,7 @@ public class EnglishController {
 
       } else if (selWord.equals("k")) {
         System.out.println(list.get(ran[i]).getWord());
-        String answer = view.randomTest();
+        String answer = viewer.randomTest();
 
         if (!answer.equals(list.get(ran[i]).getDef1())
             || !answer.equals(list.get(ran[i]).getDef2())) {
@@ -274,7 +283,9 @@ public class EnglishController {
   public void reTest() {}
 
   public void edit() {
-    String editWord = view.editViewer();
+    ArrayList<Word> list = new ArrayList<>();
+
+    String editWord = viewer.editViewer();
     boolean found = false;
 
     if (editWord.equalsIgnoreCase("c")) {
