@@ -23,6 +23,10 @@ public class EnglishViewer {
     return sc.nextInt();
   }
 
+  public void terminated() {
+    System.out.println("Terminated");
+  }
+
   public String searchViewer() {
     System.out.println("Search Word / Cancel (w/c)");
     System.out.print("=> ");
@@ -32,6 +36,10 @@ public class EnglishViewer {
   public String addViewer(String text) {
     System.out.println("Enter new " + text + " : ");
     return sc.next();
+  }
+
+  public void addSuccess() {
+    System.out.println("New word and definitions successfully added");
   }
 
   public String editViewer() {

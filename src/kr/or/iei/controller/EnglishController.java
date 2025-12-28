@@ -57,7 +57,7 @@ public class EnglishController {
           edit();
           break;
         case 0:
-          System.out.println("Terminated");
+          engViewer.terminated();
           return;
         default:
           break;
@@ -94,30 +94,6 @@ public class EnglishController {
       System.out.println("I/O Error");
     }
     return list;
-  }
-
-  public void add() {
-    BufferedWriter bw = null;
-    try {
-      bw = new BufferedWriter(new FileWriter(fileWithWords, true));
-
-      bw.newLine();
-      bw.write(engViewer.addViewer("word") + "/");
-      bw.write(engViewer.addViewer("definition (1/2)") + "/");
-      bw.write(engViewer.addViewer("definition (2/2)"));
-
-      System.out.println("New word and definitions successfully added");
-
-    } catch (IOException e) {
-      System.out.println("I/O Error");
-    } finally {
-      try {
-        assert bw != null;
-        bw.close();
-      } catch (IOException e) {
-        System.out.println("I/O Error");
-      }
-    }
   }
 
   public void test() {
@@ -192,6 +168,22 @@ public class EnglishController {
   }
 
   public void reTest() {}
+
+  public void add() {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileWithWords, true))) {
+      bw.newLine();
+      bw.write(engViewer.addViewer("word") + "/");
+      bw.write(engViewer.addViewer("definition (1/2)") + "/");
+      bw.write(engViewer.addViewer("definition (2/2)"));
+
+      // TODO: add logic
+
+      engViewer.addSuccess();
+
+    } catch (IOException e) {
+      System.out.println("I/O Error");
+    }
+  }
 
   public void edit() {
     ArrayList<Word> list = new ArrayList<>();
