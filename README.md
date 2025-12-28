@@ -65,7 +65,7 @@
 - `-d out`: compiled `.class` files into `out/` directory
 
 ```bash
-java -d out $(find src -name "*.java")
+javac -d out $(find src -name "*.java")
 ```
 
 - `Start`: java file with `psvm`
