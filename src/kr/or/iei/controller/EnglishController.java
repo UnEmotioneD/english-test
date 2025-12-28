@@ -68,12 +68,12 @@ public class EnglishController {
     wordList = readFile(fileWithWords);
   }
 
-  public void readFailedWord() {
+  public void readFailedWordFile() {
     String fileWithFailedWords = "failDb.txt";
     failList = readFile(fileWithFailedWords);
   }
 
-  public ArrayList<Word> readFile(String fileName) {
+  private ArrayList<Word> readFile(String fileName) {
     ArrayList<Word> list = new ArrayList<>();
 
     try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -144,11 +144,11 @@ public class EnglishController {
   public ArrayList<WordWithIndex> oneChar(String searchWord) {
     ArrayList<Word> list = new ArrayList<>();
 
-    int j = 0;
+    int i = 0;
     for (Word word : list) {
       if (word.getWord().charAt(0) == searchWord.charAt(0)) {
-        j++;
-        wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), j));
+        i++;
+        wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), i));
       }
     }
     return wordsWithIndex;
@@ -176,10 +176,10 @@ public class EnglishController {
     wordsWithIndex.clear();
     int j = 0;
     for (Word word : list) {
-      for (int i = 0; i < word.getWord().length() - 2; i++) {
-        if (word.getWord().charAt(i) == firstChar
-            && word.getWord().charAt(i + 1) == secondChar
-            && word.getWord().charAt(i + 2) == thirdChar) {
+      for (int k = 0; k < word.getWord().length() - 2; k++) {
+        if (word.getWord().charAt(k) == firstChar
+            && word.getWord().charAt(k + 1) == secondChar
+            && word.getWord().charAt(k + 2) == thirdChar) {
           j++;
           wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), j));
         }
@@ -222,31 +222,31 @@ public class EnglishController {
     int ranNum = viewer.random();
     int[] ran = new int[ranNum];
 
-    for (int i = 0; i < ran.length; i++) {
-      ran[i] = random.nextInt(list.size());
-      for (int j = 0; j < i; j++) {
-        if (ran[i] == ran[j]) {
-          i--;
+    for (int j = 0; j < ran.length; j++) {
+      ran[j] = random.nextInt(list.size());
+      for (int k = 0; k < j; k++) {
+        if (ran[j] == ran[k]) {
+          j--;
         }
       }
     }
 
-    for (int i = 0; i < ranNum; i++) {
+    for (int j = 0; j < ranNum; j++) {
       if (selWord.equals("e")) {
-        System.out.println(list.get(ran[i]).getDef1() + "\t" + list.get(ran[i]).getDef2());
+        System.out.println(list.get(ran[j]).getDef1() + "\t" + list.get(ran[j]).getDef2());
         String answer = viewer.randomTest();
 
-        if (!answer.equals(list.get(ran[i]).getWord())) {
-          testList.add(list.get(ran[i]));
+        if (!answer.equals(list.get(ran[j]).getWord())) {
+          testList.add(list.get(ran[j]));
         }
 
       } else if (selWord.equals("k")) {
-        System.out.println(list.get(ran[i]).getWord());
+        System.out.println(list.get(ran[j]).getWord());
         String answer = viewer.randomTest();
 
-        if (!answer.equals(list.get(ran[i]).getDef1())
-            || !answer.equals(list.get(ran[i]).getDef2())) {
-          testList.add(list.get(ran[i]));
+        if (!answer.equals(list.get(ran[j]).getDef1())
+            || !answer.equals(list.get(ran[j]).getDef2())) {
+          testList.add(list.get(ran[j]));
         }
       } else {
         System.out.println("Error");
@@ -258,12 +258,12 @@ public class EnglishController {
       FileWriter fw = new FileWriter("failDB.txt", true);
       bw = new BufferedWriter(fw);
 
-      for (int i = 0; i < testList.size(); i++) {
-        for (int j = 0; j < failList.size(); j++) {
-          if (!failList.get(i).getWord().equals(testList.get(i).getWord())) {
-            bw.write(testList.get(i).getWord() + "/");
-            bw.write(testList.get(i).getDef1() + "/");
-            bw.write(testList.get(i).getDef2());
+      for (int k = 0; k < testList.size(); k++) {
+        for (int l = 0; l < failList.size(); l++) {
+          if (!failList.get(k).getWord().equals(testList.get(k).getWord())) {
+            bw.write(testList.get(k).getWord() + "/");
+            bw.write(testList.get(k).getDef1() + "/");
+            bw.write(testList.get(k).getDef2());
             bw.newLine();
           }
         }
