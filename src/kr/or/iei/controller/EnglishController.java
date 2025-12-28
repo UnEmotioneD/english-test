@@ -9,14 +9,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import kr.or.iei.model.vo.EnglishInterface;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.model.vo.WordWithIndex;
 import kr.or.iei.viewer.EnglishViewer;
 
-public class EnglishController implements EnglishInterface {
-  ArrayList<Word> list;
-  ArrayList<Word> searchList;
+public class EnglishController {
+  Scanner sc;
+  EnglishViewer viewer;
+
+  ArrayList<Word> wordList;
   ArrayList<Word> failList;
   ArrayList<Word> testList;
   ArrayList<WordWithIndex> continueSearchList;
@@ -33,7 +34,6 @@ public class EnglishController implements EnglishInterface {
     view = new EnglishViewer();
   }
 
-  @Override
   public void mainMethod() {
     while (true) {
       importWord();
@@ -117,7 +117,6 @@ public class EnglishController implements EnglishInterface {
     }
   }
 
-  @Override
   public void search() {
     boolean found = false;
     String searchWord;
@@ -202,7 +201,6 @@ public class EnglishController implements EnglishInterface {
     return wordsWithIndex;
   }
 
-  @Override
   public void add() {
     BufferedWriter bw = null;
     try {
@@ -227,7 +225,6 @@ public class EnglishController implements EnglishInterface {
     }
   }
 
-  @Override
   public void test() {
     System.out.println(failList);
 
@@ -294,10 +291,8 @@ public class EnglishController implements EnglishInterface {
     }
   }
 
-  @Override
   public void reTest() {}
 
-  @Override
   public void edit() {
     String editWord = view.editViewer();
     boolean found = false;
