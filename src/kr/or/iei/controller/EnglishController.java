@@ -21,6 +21,9 @@ public class EnglishController {
   ArrayList<Word> failList;
   ArrayList<Word> testList;
 
+  final String fileWithWords = "allDb.txt";
+  final String fileWithFailedWords = "failDb.txt";
+
   public EnglishController() {
     sc = new Scanner(System.in);
     engViewer = new EnglishViewer();
@@ -63,12 +66,10 @@ public class EnglishController {
   }
 
   public void readWordFile() {
-    String fileWithWords = "allDb.txt";
     wordList = readFile(fileWithWords);
   }
 
   public void readFailedWordFile() {
-    String fileWithFailedWords = "failDb.txt";
     failList = readFile(fileWithFailedWords);
   }
 
@@ -98,7 +99,7 @@ public class EnglishController {
   public void add() {
     BufferedWriter bw = null;
     try {
-      bw = new BufferedWriter(new FileWriter("allDB.txt", true));
+      bw = new BufferedWriter(new FileWriter(fileWithWords, true));
 
       bw.newLine();
       bw.write(engViewer.addViewer("word") + "/");
@@ -139,7 +140,10 @@ public class EnglishController {
     }
 
     for (int j = 0; j < ranNum; j++) {
-      if (selWord.equals("e")) {
+      final String engSelected = "e";
+      final String korSelected = "k";
+
+      if (selWord.equals(engSelected)) {
         System.out.println(list.get(ran[j]).getDef1() + "\t" + list.get(ran[j]).getDef2());
         String answer = engViewer.randomTest();
 
@@ -147,7 +151,7 @@ public class EnglishController {
           testList.add(list.get(ran[j]));
         }
 
-      } else if (selWord.equals("k")) {
+      } else if (selWord.equals(korSelected)) {
         System.out.println(list.get(ran[j]).getWord());
         String answer = engViewer.randomTest();
 
@@ -162,7 +166,7 @@ public class EnglishController {
     BufferedWriter bw = null;
 
     try {
-      FileWriter fw = new FileWriter("failDB.txt", true);
+      FileWriter fw = new FileWriter(fileWithFailedWords, true);
       bw = new BufferedWriter(fw);
 
       for (int k = 0; k < testList.size(); k++) {
@@ -202,10 +206,11 @@ public class EnglishController {
       System.out.println("y / s");
       char yesOrNo = sc.next().charAt(0);
 
-      if (yesOrNo == 'y') {
-
+      final char yesSelected = 'y';
+      if (yesOrNo == yesSelected) {
+        // TODO: confirm editing word
       } else {
-        System.out.println("Canceling it ...");
+        System.out.println("Canceling ...");
       }
 
     } else {

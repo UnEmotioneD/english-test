@@ -7,7 +7,6 @@ import kr.or.iei.viewer.EnglishViewer;
 
 public class SearchController {
   EnglishViewer engViewer;
-
   ArrayList<WordWithIndex> wordsWithIndex;
 
   public SearchController() {
@@ -22,8 +21,9 @@ public class SearchController {
     String searchWord;
     while (!found) {
       searchWord = engViewer.searchViewer();
-      // Cancel when typed "c"
-      if (searchWord.equalsIgnoreCase("c")) {
+
+      final String cancel = "c";
+      if (searchWord.equalsIgnoreCase(cancel)) {
         System.out.println("Canceling Search");
         break;
       }
