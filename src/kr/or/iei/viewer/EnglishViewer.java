@@ -2,7 +2,7 @@ package kr.or.iei.viewer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import kr.or.iei.model.vo.WordWithIndex;
+import kr.or.iei.model.vo.Word;
 
 public class EnglishViewer {
   Scanner sc;
@@ -68,7 +68,7 @@ public class EnglishViewer {
     return sc.next().charAt(0);
   }
 
-  public int searchView(ArrayList<WordWithIndex> list) {
+  public int searchView(ArrayList<Word> list) {
     for (int i = 0; i < list.size(); i++) {
       System.out.printf("%2d %-13s\t", i + 1, list.get(i).getWord());
       if ((i + 1) % 3 == 0) {
@@ -79,7 +79,7 @@ public class EnglishViewer {
     return sc.nextInt();
   }
 
-  public void showChosenIndex(int chosenIndex, ArrayList<WordWithIndex> list) {
+  public void showChosenIndex(int chosenIndex, ArrayList<Word> list) {
     System.out.print(list.get(chosenIndex).toString());
     System.out.println();
   }

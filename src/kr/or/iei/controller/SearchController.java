@@ -2,12 +2,11 @@ package kr.or.iei.controller;
 
 import java.util.ArrayList;
 import kr.or.iei.model.vo.Word;
-import kr.or.iei.model.vo.WordWithIndex;
 import kr.or.iei.viewer.EnglishViewer;
 
 public class SearchController {
   EnglishViewer engViewer;
-  ArrayList<WordWithIndex> wordsWithIndex;
+  ArrayList<Word> wordsWithIndex;
 
   public SearchController() {
     engViewer = new EnglishViewer();
@@ -60,20 +59,19 @@ public class SearchController {
     }
   }
 
-  public ArrayList<WordWithIndex> oneChar(String searchWord) {
+  public ArrayList<Word> oneChar(String searchWord) {
     ArrayList<Word> list = new ArrayList<>();
 
-    int i = 0;
     for (Word word : list) {
       if (word.getWord().charAt(0) == searchWord.charAt(0)) {
-        i++;
-        wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), i));
+        wordsWithIndex.add(
+            new Word(word.getWord(), word.getDef1(), word.getDef2(), word.getIndex()));
       }
     }
     return wordsWithIndex;
   }
 
-  public ArrayList<WordWithIndex> twoChar(char firstChar, char secondChar) {
+  public ArrayList<Word> twoChar(char firstChar, char secondChar) {
     ArrayList<Word> list = new ArrayList<>();
 
     wordsWithIndex.clear();
@@ -82,14 +80,14 @@ public class SearchController {
       for (int k = 0; k < word.getWord().length() - 1; k++) {
         if (word.getWord().charAt(k) == firstChar && word.getWord().charAt(k + 1) == secondChar) {
           j++;
-          wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), j));
+          wordsWithIndex.add(new Word(word.getWord(), word.getDef1(), word.getDef2(), j));
         }
       }
     }
     return wordsWithIndex;
   }
 
-  public ArrayList<WordWithIndex> threeChar(char firstChar, char secondChar, char thirdChar) {
+  public ArrayList<Word> threeChar(char firstChar, char secondChar, char thirdChar) {
     ArrayList<Word> list = new ArrayList<>();
 
     wordsWithIndex.clear();
@@ -100,7 +98,7 @@ public class SearchController {
             && word.getWord().charAt(k + 1) == secondChar
             && word.getWord().charAt(k + 2) == thirdChar) {
           j++;
-          wordsWithIndex.add(new WordWithIndex(word.getWord(), word.getDef1(), word.getDef2(), j));
+          wordsWithIndex.add(new Word(word.getWord(), word.getDef1(), word.getDef2(), j));
         }
       }
     }

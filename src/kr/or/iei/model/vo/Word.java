@@ -4,6 +4,7 @@ public class Word {
   private String word;
   private String def1;
   private String def2;
+  private int index;
 
   public Word() {
     super();
@@ -13,6 +14,13 @@ public class Word {
     this.word = word;
     this.def1 = def1;
     this.def2 = def2;
+  }
+
+  public Word(String word, String def1, String def2, int index) {
+    this.word = word;
+    this.def1 = def1;
+    this.def2 = def2;
+    this.index = index;
   }
 
   public String getWord() {
@@ -37,6 +45,14 @@ public class Word {
 
   public void setDef2(String def2) {
     this.def2 = def2;
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
   }
 
   @Override
