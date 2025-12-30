@@ -102,4 +102,12 @@ public class EnglishController {
   public String getFileWithFailedWords() {
     return fileWithFailedWords;
   }
+
+  public ArrayList<Word> getWordList() {
+    return wordList;
+  }
+
+  public ArrayList<Word> getFailList() {
+    return failList;
+  }
 }

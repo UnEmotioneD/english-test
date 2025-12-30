@@ -5,19 +5,26 @@ import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.EnglishViewer;
 
 public class SearchController {
+  EnglishController engCon;
   EnglishViewer engViewer;
+
   ArrayList<Word> wordsWithIndex;
+  ArrayList<Word> list;
 
   public SearchController() {
+    engCon = new EnglishController();
     engViewer = new EnglishViewer();
+
     wordsWithIndex = new ArrayList<>();
+    list = engCon.getWordList();
   }
 
+  // BUG: stack over flow
+  // must have no exit statement somewhere
   public void search() {
-    ArrayList<Word> list = new ArrayList<>();
+    String searchWord;
 
     boolean found = false;
-    String searchWord;
     while (!found) {
       searchWord = engViewer.searchViewer();
 
@@ -60,8 +67,6 @@ public class SearchController {
   }
 
   public ArrayList<Word> oneChar(String searchWord) {
-    ArrayList<Word> list = new ArrayList<>();
-
     for (Word word : list) {
       if (word.getWord().charAt(0) == searchWord.charAt(0)) {
         wordsWithIndex.add(
@@ -72,8 +77,6 @@ public class SearchController {
   }
 
   public ArrayList<Word> twoChar(char firstChar, char secondChar) {
-    ArrayList<Word> list = new ArrayList<>();
-
     wordsWithIndex.clear();
     int j = 0;
     for (Word word : list) {
@@ -88,8 +91,6 @@ public class SearchController {
   }
 
   public ArrayList<Word> threeChar(char firstChar, char secondChar, char thirdChar) {
-    ArrayList<Word> list = new ArrayList<>();
-
     wordsWithIndex.clear();
     int j = 0;
     for (Word word : list) {

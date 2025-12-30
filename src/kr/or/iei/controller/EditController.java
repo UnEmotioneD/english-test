@@ -10,17 +10,19 @@ import kr.or.iei.viewer.EnglishViewer;
 
 public class EditController {
   Scanner sc;
+  EnglishController engCon;
   EnglishViewer engViewer;
 
-  EnglishController engCon;
   final String fileWithWords;
+  ArrayList<Word> list;
 
   public EditController() {
     sc = new Scanner(System.in);
+    engCon = new EnglishController();
     engViewer = new EnglishViewer();
 
-    engCon = new EnglishController();
     fileWithWords = engCon.getFileWithWords();
+    list = engCon.getWordList();
   }
 
   public void add() {
@@ -40,8 +42,6 @@ public class EditController {
   }
 
   public void edit() {
-    ArrayList<Word> list = new ArrayList<>();
-
     String editWord = engViewer.editViewer();
     boolean found = false;
 
