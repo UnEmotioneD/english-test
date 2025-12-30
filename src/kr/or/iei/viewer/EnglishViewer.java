@@ -33,6 +33,15 @@ public class EnglishViewer {
     return sc.next();
   }
 
+  public String newWord() {
+    System.out.println("New Word: ");
+    return sc.next();
+  }
+
+  public void dupWord() {
+    System.out.println("Duplicated Word.");
+  }
+
   public String addViewer(String text) {
     System.out.println("Enter new " + text + " : ");
     return sc.next();
