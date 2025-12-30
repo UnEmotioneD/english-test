@@ -10,8 +10,8 @@ import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.EnglishViewer;
 
 public class EnglishController {
-  private final String fileWithWords = "allDb.txt";
-  private final String fileWithFailedWords = "failDb.txt";
+  private final String fileWithWords = "allDB.txt";
+  private final String fileWithFailedWords = "failDB.txt";
 
   Scanner sc;
   EnglishViewer engViewer;
