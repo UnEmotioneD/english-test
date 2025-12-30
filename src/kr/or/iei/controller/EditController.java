@@ -25,14 +25,27 @@ public class EditController {
     list = engCon.getWordList();
   }
 
+  public void newWord() {
+    String newWord = engViewer.newWord();
+
+    for (Word word : list) {
+      if (word.getWord().equals(newWord)) {
+        engViewer.dupWord();
+        break;
+      } else {
+        // TODO: get two different definitions
+      }
+    }
+  }
+
+  // WARN: added word might be duplicated
   public void add() {
+
     try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileWithWords, true))) {
       bw.newLine();
       bw.write(engViewer.addViewer("word") + "/");
       bw.write(engViewer.addViewer("definition (1/2)") + "/");
       bw.write(engViewer.addViewer("definition (2/2)"));
-
-      // TODO: add logic
 
       engViewer.addSuccess();
 
