@@ -77,6 +77,12 @@ java -cp out kr.or.iei.start.Start
 
 This will run the project
 
+In one line:
+
+```bash
+javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
+```
+
 ---
 
 - create a `.jar` files
