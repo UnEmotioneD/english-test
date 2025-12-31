@@ -10,8 +10,8 @@ import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.EnglishViewer;
 
 public class EnglishController {
-  private final String fileWithWords = "allDB.txt";
-  private final String fileWithFailedWords = "failDB.txt";
+  private final String wordFile = "allDB.txt";
+  private final String failedWordFile = "failDB.txt";
 
   Scanner sc;
   EnglishViewer engViewer;
@@ -65,11 +65,11 @@ public class EnglishController {
   }
 
   public void readWordFile() {
-    wordList = readFile(fileWithWords);
+    wordList = readFile(wordFile);
   }
 
   public void readFailedWordFile() {
-    failList = readFile(fileWithFailedWords);
+    failList = readFile(failedWordFile);
   }
 
   private ArrayList<Word> readFile(String fileName) {
@@ -95,12 +95,12 @@ public class EnglishController {
     return list;
   }
 
-  public String getFileWithWords() {
-    return fileWithWords;
+  public String getWordFile() {
+    return wordFile;
   }
 
-  public String getFileWithFailedWords() {
-    return fileWithFailedWords;
+  public String getFailedWordFile() {
+    return failedWordFile;
   }
 
   public ArrayList<Word> getWordList() {

@@ -9,14 +9,14 @@ public class SearchController {
   EnglishViewer engViewer;
 
   ArrayList<Word> wordsWithIndex;
-  ArrayList<Word> list;
+  ArrayList<Word> wordList;
 
   public SearchController() {
     engCon = new EnglishController();
     engViewer = new EnglishViewer();
 
     wordsWithIndex = new ArrayList<>();
-    list = engCon.getWordList();
+    wordList = engCon.getWordList();
   }
 
   // BUG: stack over flow
@@ -48,7 +48,7 @@ public class SearchController {
                   threeChar(searchWord.charAt(0), searchWord.charAt(1), searchWord.charAt(2)));
           break;
         default:
-          for (Word word : list) {
+          for (Word word : wordList) {
             if (word.getWord().equalsIgnoreCase(searchWord)
                 || word.getDef1().equalsIgnoreCase(searchWord)
                 || word.getDef2().equalsIgnoreCase(searchWord)) {
@@ -67,7 +67,7 @@ public class SearchController {
   }
 
   public ArrayList<Word> oneChar(String searchWord) {
-    for (Word word : list) {
+    for (Word word : wordList) {
       if (word.getWord().charAt(0) == searchWord.charAt(0)) {
         wordsWithIndex.add(
             new Word(word.getWord(), word.getDef1(), word.getDef2(), word.getIndex()));
@@ -79,7 +79,7 @@ public class SearchController {
   public ArrayList<Word> twoChar(char firstChar, char secondChar) {
     wordsWithIndex.clear();
     int j = 0;
-    for (Word word : list) {
+    for (Word word : wordList) {
       for (int k = 0; k < word.getWord().length() - 1; k++) {
         if (word.getWord().charAt(k) == firstChar && word.getWord().charAt(k + 1) == secondChar) {
           j++;
@@ -93,7 +93,7 @@ public class SearchController {
   public ArrayList<Word> threeChar(char firstChar, char secondChar, char thirdChar) {
     wordsWithIndex.clear();
     int j = 0;
-    for (Word word : list) {
+    for (Word word : wordList) {
       for (int k = 0; k < word.getWord().length() - 2; k++) {
         if (word.getWord().charAt(k) == firstChar
             && word.getWord().charAt(k + 1) == secondChar

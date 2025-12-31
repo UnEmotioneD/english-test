@@ -17,7 +17,7 @@ public class TestController {
   ArrayList<Word> testList;
   ArrayList<Word> failList;
 
-  final String fileWithFailedWords;
+  final String failedWordFile;
 
   public TestController() {
     sc = new Scanner(System.in);
@@ -28,7 +28,7 @@ public class TestController {
     testList = new ArrayList<>();
     failList = new ArrayList<>();
 
-    fileWithFailedWords = engCon.getFileWithFailedWords();
+    failedWordFile = engCon.getFailedWordFile();
   }
 
   public void test() {
@@ -77,7 +77,7 @@ public class TestController {
     BufferedWriter bw = null;
 
     try {
-      FileWriter fw = new FileWriter(fileWithFailedWords, true);
+      FileWriter fw = new FileWriter(failedWordFile, true);
       bw = new BufferedWriter(fw);
 
       for (int k = 0; k < testList.size(); k++) {

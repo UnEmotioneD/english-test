@@ -13,7 +13,7 @@ public class EditController {
   EnglishController engCon;
   EnglishViewer engViewer;
 
-  final String fileWithWords;
+  final String wordFile;
   ArrayList<Word> list;
 
   public EditController() {
@@ -21,7 +21,7 @@ public class EditController {
     engCon = new EnglishController();
     engViewer = new EnglishViewer();
 
-    fileWithWords = engCon.getFileWithWords();
+    wordFile = engCon.getWordFile();
     list = engCon.getWordList();
   }
 
@@ -41,7 +41,7 @@ public class EditController {
   // WARN: added word might be duplicated
   public void add() {
 
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileWithWords, true))) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(wordFile, true))) {
       bw.newLine();
       bw.write(engViewer.addViewer("word") + "/");
       bw.write(engViewer.addViewer("definition (1/2)") + "/");
