@@ -54,7 +54,7 @@ public class TestController {
       final String engSelected = "e";
       final String korSelected = "k";
 
-      if (selWord.equals(engSelected)) {
+      if (selWord.equalsIgnoreCase(engSelected)) {
         System.out.println(list.get(ran[j]).getDef1() + "\t" + list.get(ran[j]).getDef2());
         String answer = engViewer.randomTest();
 
@@ -62,7 +62,7 @@ public class TestController {
           testList.add(list.get(ran[j]));
         }
 
-      } else if (selWord.equals(korSelected)) {
+      } else if (selWord.equalsIgnoreCase(korSelected)) {
         System.out.println(list.get(ran[j]).getWord());
         String answer = engViewer.randomTest();
 

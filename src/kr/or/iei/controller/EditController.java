@@ -29,7 +29,7 @@ public class EditController {
     String newWord = engViewer.newWord();
 
     for (Word word : list) {
-      if (word.getWord().equals(newWord)) {
+      if (word.getWord().equalsIgnoreCase(newWord)) {
         engViewer.dupWord();
         break;
       } else {
