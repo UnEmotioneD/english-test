@@ -5,6 +5,49 @@
 - ArrayList의 데이터가 변화되는 시점과 동시에 파일 내용에도 동기화 필요
 - 메뉴 리스트
 
+---
+
+## TODO List
+
+### Search
+
+- [x] Search with word
+- [ ] Search with definition
+- [ ] fuzzy search for word
+- [x] print no word exist message
+- [x] option to cancel search
+
+### Add
+
+- [x] get input for word, 2 definitions
+- [ ] check duplication before adding
+- [ ] option to cancel add
+
+### Test
+
+- [ ] guess word by definitions
+- [ ] guess one of definitions by word
+- [ ] number of tests are chosen by user with no duplicated test
+- [ ] words failed to guess goes to failDB.txt with no duplications
+- [ ] option to cancel test
+
+### Failed Note
+
+- [ ] show failDB.txt content with index word only
+- [ ] show definitions when word is chosen with index by user
+- [ ] test only with words from failDB.txt
+- [ ] empty failDB.txt without removing the file
+- [ ] remove correctly guessed words from failDB.txt
+
+### Edit
+
+- [ ] search word to edit by word and change definitions without duplication
+- [ ] search word to delete by word
+- [ ] if more then one word is searched number it and take input
+- [ ] option to delete all
+
+---
+
 ## 1 단어 검색
 
 - 영단어 또는 뜻으로 검색
