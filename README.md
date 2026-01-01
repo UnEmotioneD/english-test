@@ -3,48 +3,6 @@
 - 최초에 allDB.txt를 읽어와 ArrayList로 저장
 - 입/출력 시, 문자 스트림 사용 (보조 스트림 사용)
 - ArrayList의 데이터가 변화되는 시점과 동시에 파일 내용에도 동기화 필요
-- 메뉴 리스트
-
----
-
-## TODO List
-
-### Search
-
-- [x] Search with word
-- [ ] Search with definition
-- [ ] fuzzy search for word
-- [x] print no word exist message
-- [x] option to cancel search
-
-### Add
-
-- [x] get input for word, 2 definitions
-- [ ] check duplication before adding
-- [ ] option to cancel add
-
-### Test
-
-- [ ] guess word by definitions
-- [ ] guess one of definitions by word
-- [ ] number of tests are chosen by user with no duplicated test
-- [ ] words failed to guess goes to failDB.txt with no duplications
-- [ ] option to cancel test
-
-### Failed Note
-
-- [ ] show failDB.txt content with index word only
-- [ ] show definitions when word is chosen with index by user
-- [ ] test only with words from failDB.txt
-- [ ] empty failDB.txt without removing the file
-- [ ] remove correctly guessed words from failDB.txt
-
-### Edit
-
-- [ ] search word to edit by word and change definitions without duplication
-- [ ] search word to delete by word
-- [ ] if more then one word is searched number it and take input
-- [ ] option to delete all
 
 ---
 
@@ -102,7 +60,50 @@
 - 뜻을 입력하여 삭제 시, 대상 영단어가 2개 이상일 경우 넘버링하여 출력하고 삭제할 영단어를 숫자로 입력 받음
   - 전체 삭제 메뉴도 출력
 
-### Run from Terminal
+---
+
+## TODO List
+
+### Search
+
+- [x] Search with word
+- [ ] Search with definition
+- [ ] fuzzy search for word
+- [x] print no word exist message
+- [x] option to cancel search
+
+### Add
+
+- [x] get input for word, 2 definitions
+- [ ] check duplication before adding
+- [ ] option to cancel add
+
+### Test
+
+- [ ] guess word by definitions
+- [ ] guess one of definitions by word
+- [ ] number of tests are chosen by user with no duplicated test
+- [ ] words failed to guess goes to failDB.txt with no duplications
+- [ ] option to cancel test
+
+### Failed Note
+
+- [ ] show failDB.txt content with index word only
+- [ ] show definitions when word is chosen with index by user
+- [ ] test only with words from failDB.txt
+- [ ] empty failDB.txt without removing the file
+- [ ] remove correctly guessed words from failDB.txt
+
+### Edit
+
+- [ ] search word to edit by word and change definitions without duplication
+- [ ] search word to delete by word
+- [ ] if more then one word is searched number it and take input
+- [ ] option to delete all
+
+---
+
+## Compile & Run
 
 - `find src -name "*.java"`: find all java files
 - `-d out`: compiled `.class` files into `out/` directory
@@ -141,3 +142,7 @@ jar --create --file english-test.jar \
 ```bash
 java -jar english-test.jar
 ```
+
+---
+
+### Happy Hacking! 🎉
