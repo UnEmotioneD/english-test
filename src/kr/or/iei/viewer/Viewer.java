@@ -48,7 +48,7 @@ public class Viewer {
   }
 
   public String newWord() {
-    System.out.println("New Word: ");
+    System.out.print("New Word: ");
     return sc.next();
   }
 
@@ -56,9 +56,18 @@ public class Viewer {
     System.out.println("Duplicated Word.");
   }
 
-  public String addViewer(String text) {
-    System.out.println("Enter new " + text + " : ");
-    return sc.next();
+  public Word add() {
+    Word newWord = new Word();
+
+    System.out.println();
+    System.out.print("Enter new word: ");
+    newWord.setWord(sc.next());
+    System.out.print("Definition (1/2): ");
+    newWord.setDef1(sc.next());
+    System.out.print("Definition (2/2): ");
+    newWord.setDef2(sc.next());
+
+    return newWord;
   }
 
   public void addSuccess() {

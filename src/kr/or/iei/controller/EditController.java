@@ -35,15 +35,11 @@ public class EditController {
 
   // WARN: added word might be duplicated
   public void add() {
-
     try (BufferedWriter bw = new BufferedWriter(new FileWriter(menuCon.getWordFile(), true))) {
+      Word word = viewer.add();
       bw.newLine();
-      bw.write(viewer.addViewer("word") + "/");
-      bw.write(viewer.addViewer("definition (1/2)") + "/");
-      bw.write(viewer.addViewer("definition (2/2)"));
-
+      bw.write(word.getWord() + "/" + word.getDef1() + "/" + word.getDef2());
       viewer.addSuccess();
-
     } catch (IOException e) {
       System.out.println("I/O Error");
     }
