@@ -17,18 +17,14 @@ public class TestController {
   ArrayList<Word> testList;
   ArrayList<Word> failList;
 
-  final String failedWordFile;
-
-  public TestController() {
+  public TestController(MenuController menuCon) {
     sc = new Scanner(System.in);
 
-    menuCon = new MenuController();
-    viewer = new Viewer();
+    this.menuCon = menuCon;
+    this.viewer = new Viewer();
 
     testList = new ArrayList<>();
     failList = new ArrayList<>();
-
-    failedWordFile = menuCon.getFailedWordFile();
   }
 
   public void test() {
@@ -77,7 +73,7 @@ public class TestController {
     BufferedWriter bw = null;
 
     try {
-      FileWriter fw = new FileWriter(failedWordFile, true);
+      FileWriter fw = new FileWriter(menuCon.getFailedWordFile(), true);
       bw = new BufferedWriter(fw);
 
       for (int k = 0; k < testList.size(); k++) {

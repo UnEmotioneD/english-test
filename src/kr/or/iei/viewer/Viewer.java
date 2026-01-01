@@ -28,7 +28,8 @@ public class Viewer {
   }
 
   public String searchViewer() {
-    System.out.println("Search Word / Cancel (w/c): ");
+    System.out.println("Search Word / Cancel (w/c)");
+    System.out.print("=> ");
     String input = sc.next();
     if (input.equalsIgnoreCase("c")) {
       System.out.println("Canceling Search");
@@ -40,6 +41,10 @@ public class Viewer {
     System.out.println("=== Search Results ===");
     System.out.println("Word: " + word.getWord());
     System.out.println("Definitions: " + word.getDef1() + ", " + word.getDef2());
+  }
+
+  public void noSearchResults(String searchedWord) {
+    System.out.println("No such words: " + searchedWord);
   }
 
   public String newWord() {

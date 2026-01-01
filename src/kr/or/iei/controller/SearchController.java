@@ -1,6 +1,5 @@
 package kr.or.iei.controller;
 
-import java.util.ArrayList;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.Viewer;
 
@@ -8,27 +7,21 @@ public class SearchController {
   MenuController menuCon;
   Viewer viewer;
 
-  ArrayList<Word> wordsWithIndex;
-  ArrayList<Word> wordList;
-
-  public SearchController() {
-    menuCon = new MenuController();
-    viewer = new Viewer();
-
-    wordsWithIndex = new ArrayList<>();
-    wordList = menuCon.getWordList();
+  public SearchController(MenuController menuCon) {
+    this.menuCon = menuCon;
+    this.viewer = new Viewer();
   }
 
   public void search() {
     String searchWord;
     String cancelSearch = "c";
 
-    boolean isFound = false;
-    while (isFound) {
+    boolean searching = true;
+    while (searching) {
       searchWord = viewer.searchViewer();
 
       if (searchWord.equals(cancelSearch)) {
-        isFound = !isFound;
+        searching = false;
         continue;
       }
 
@@ -36,6 +29,8 @@ public class SearchController {
 
       if (searchResults != null) {
         viewer.showSearchResults(searchResults);
+      } else {
+        viewer.noSearchResults(searchWord);
       }
     }
   }
@@ -44,17 +39,18 @@ public class SearchController {
   public Word searchWord(String searchWord) {
     Word searchResults = new Word();
 
-    for (Word word : wordList) {
+    for (Word word : menuCon.getWordList()) {
       String textFromFile = word.getWord();
 
       if (searchWord.equalsIgnoreCase(textFromFile)) {
         searchResults.setWord(word.getWord());
         searchResults.setDef1(word.getDef1());
         searchResults.setDef2(word.getDef2());
+
+        return searchResults;
       }
     }
-
-    return searchResults;
+    return null;
   }
 
   public void searchDef() {}

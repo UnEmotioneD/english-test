@@ -3,35 +3,30 @@ package kr.or.iei.controller;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.Viewer;
 
 public class EditController {
   Scanner sc;
+
   MenuController menuCon;
   Viewer viewer;
 
-  final String wordFile;
-  ArrayList<Word> list;
-
-  public EditController() {
+  public EditController(MenuController menuCon) {
     sc = new Scanner(System.in);
-    menuCon = new MenuController();
-    viewer = new Viewer();
 
-    wordFile = menuCon.getWordFile();
-    list = menuCon.getWordList();
+    this.menuCon = menuCon;
+    this.viewer = new Viewer();
   }
 
   public void newWord() {
     String newWord = viewer.newWord();
 
-    for (Word word : list) {
+    for (Word word : menuCon.getWordList()) {
       if (word.getWord().equalsIgnoreCase(newWord)) {
         viewer.dupWord();
-        break;
+        return;
       } else {
         // TODO: get two different definitions
       }
@@ -41,7 +36,7 @@ public class EditController {
   // WARN: added word might be duplicated
   public void add() {
 
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(wordFile, true))) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(menuCon.getWordFile(), true))) {
       bw.newLine();
       bw.write(viewer.addViewer("word") + "/");
       bw.write(viewer.addViewer("definition (1/2)") + "/");
@@ -73,7 +68,7 @@ public class EditController {
       }
 
     } else {
-      for (Word word : list) {
+      for (Word word : menuCon.getWordList()) {
         if (word.getWord().equalsIgnoreCase(editWord)) {
           System.out.println(word);
           found = true;

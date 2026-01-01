@@ -14,6 +14,7 @@ public class MenuController {
   private final String failedWordFile = "failDB.txt";
 
   Scanner sc;
+
   Viewer viewer;
   SearchController searchCon;
   EditController editCon;
@@ -24,21 +25,20 @@ public class MenuController {
 
   public MenuController() {
     sc = new Scanner(System.in);
+
     viewer = new Viewer();
-    searchCon = new SearchController();
-    editCon = new EditController();
-    testCon = new TestController();
+    searchCon = new SearchController(this);
+    editCon = new EditController(this);
+    testCon = new TestController(this);
 
     wordList = new ArrayList<>();
     failList = new ArrayList<>();
   }
 
   public void mainMenu() {
-    readWordFile();
-
     while (true) {
+      readWordFile();
       int menu = viewer.menu();
-
       switch (menu) {
         case 1:
           searchCon.search();
