@@ -28,10 +28,8 @@ public class Viewer {
   }
 
   public String searchViewer() {
-    String input = "";
-
     System.out.println("Search Word / Cancel (w/c): ");
-    input = sc.next();
+    String input = sc.next();
     if (input.equalsIgnoreCase("c")) {
       System.out.println("Canceling Search");
     }
