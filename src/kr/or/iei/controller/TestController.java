@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.EnglishViewer;
+import kr.or.iei.viewer.Viewer;
 
 public class TestController {
   Scanner sc;
-  EnglishViewer engViewer;
-  EnglishController engCon;
+  MenuController menuCon;
+  Viewer viewer;
 
   ArrayList<Word> testList;
   ArrayList<Word> failList;
@@ -22,13 +22,13 @@ public class TestController {
   public TestController() {
     sc = new Scanner(System.in);
 
-    engViewer = new EnglishViewer();
-    engCon = new EnglishController();
+    menuCon = new MenuController();
+    viewer = new Viewer();
 
     testList = new ArrayList<>();
     failList = new ArrayList<>();
 
-    failedWordFile = engCon.getFailedWordFile();
+    failedWordFile = menuCon.getFailedWordFile();
   }
 
   public void test() {
@@ -37,8 +37,8 @@ public class TestController {
     System.out.println(failList);
 
     Random random = new Random();
-    String selWord = engViewer.startTest();
-    int ranNum = engViewer.random();
+    String selWord = viewer.startTest();
+    int ranNum = viewer.random();
     int[] ran = new int[ranNum];
 
     for (int j = 0; j < ran.length; j++) {
@@ -56,7 +56,7 @@ public class TestController {
 
       if (selWord.equalsIgnoreCase(engSelected)) {
         System.out.println(list.get(ran[j]).getDef1() + "\t" + list.get(ran[j]).getDef2());
-        String answer = engViewer.randomTest();
+        String answer = viewer.randomTest();
 
         if (!answer.equals(list.get(ran[j]).getWord())) {
           testList.add(list.get(ran[j]));
@@ -64,7 +64,7 @@ public class TestController {
 
       } else if (selWord.equalsIgnoreCase(korSelected)) {
         System.out.println(list.get(ran[j]).getWord());
-        String answer = engViewer.randomTest();
+        String answer = viewer.randomTest();
 
         if (!answer.equals(list.get(ran[j]).getDef1())
             || !answer.equals(list.get(ran[j]).getDef2())) {

@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.EnglishViewer;
+import kr.or.iei.viewer.Viewer;
 
-public class EnglishController {
+public class MenuController {
   private final String wordFile = "allDB.txt";
   private final String failedWordFile = "failDB.txt";
 
   Scanner sc;
-  EnglishViewer engViewer;
+  Viewer viewer;
   SearchController searchCon;
   EditController editCon;
   TestController testCon;
@@ -22,9 +22,9 @@ public class EnglishController {
   ArrayList<Word> wordList;
   ArrayList<Word> failList;
 
-  public EnglishController() {
+  public MenuController() {
     sc = new Scanner(System.in);
-    engViewer = new EnglishViewer();
+    viewer = new Viewer();
     searchCon = new SearchController();
     editCon = new EditController();
     testCon = new TestController();
@@ -33,11 +33,11 @@ public class EnglishController {
     failList = new ArrayList<>();
   }
 
-  public void mainMethod() {
+  public void mainMenu() {
     readWordFile();
 
     while (true) {
-      int menu = engViewer.menu();
+      int menu = viewer.menu();
 
       switch (menu) {
         case 1:
@@ -56,7 +56,7 @@ public class EnglishController {
           testCon.reTest();
           break;
         case 0:
-          engViewer.terminated();
+          viewer.terminated();
           return;
         default:
           break;

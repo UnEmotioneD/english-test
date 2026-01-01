@@ -1,10 +1,10 @@
 package kr.or.iei.start;
 
-import kr.or.iei.controller.EnglishController;
+import kr.or.iei.controller.MenuController;
 
 public class Start {
   public static void main(String[] args) {
-    EnglishController engCon = new EnglishController();
-    engCon.mainMethod();
+    MenuController menuCon = new MenuController();
+    menuCon.mainMethod();
   }
 }

@@ -6,31 +6,31 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.EnglishViewer;
+import kr.or.iei.viewer.Viewer;
 
 public class EditController {
   Scanner sc;
-  EnglishController engCon;
-  EnglishViewer engViewer;
+  MenuController menuCon;
+  Viewer viewer;
 
   final String wordFile;
   ArrayList<Word> list;
 
   public EditController() {
     sc = new Scanner(System.in);
-    engCon = new EnglishController();
-    engViewer = new EnglishViewer();
+    menuCon = new MenuController();
+    viewer = new Viewer();
 
-    wordFile = engCon.getWordFile();
-    list = engCon.getWordList();
+    wordFile = menuCon.getWordFile();
+    list = menuCon.getWordList();
   }
 
   public void newWord() {
-    String newWord = engViewer.newWord();
+    String newWord = viewer.newWord();
 
     for (Word word : list) {
       if (word.getWord().equalsIgnoreCase(newWord)) {
-        engViewer.dupWord();
+        viewer.dupWord();
         break;
       } else {
         // TODO: get two different definitions
@@ -43,11 +43,11 @@ public class EditController {
 
     try (BufferedWriter bw = new BufferedWriter(new FileWriter(wordFile, true))) {
       bw.newLine();
-      bw.write(engViewer.addViewer("word") + "/");
-      bw.write(engViewer.addViewer("definition (1/2)") + "/");
-      bw.write(engViewer.addViewer("definition (2/2)"));
+      bw.write(viewer.addViewer("word") + "/");
+      bw.write(viewer.addViewer("definition (1/2)") + "/");
+      bw.write(viewer.addViewer("definition (2/2)"));
 
-      engViewer.addSuccess();
+      viewer.addSuccess();
 
     } catch (IOException e) {
       System.out.println("I/O Error");
@@ -55,7 +55,7 @@ public class EditController {
   }
 
   public void edit() {
-    String editWord = engViewer.editViewer();
+    String editWord = viewer.editViewer();
     boolean found = false;
 
     if (editWord.equalsIgnoreCase("c")) {

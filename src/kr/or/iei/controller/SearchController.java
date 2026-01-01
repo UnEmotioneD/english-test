@@ -2,107 +2,60 @@ package kr.or.iei.controller;
 
 import java.util.ArrayList;
 import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.EnglishViewer;
+import kr.or.iei.viewer.Viewer;
 
 public class SearchController {
-  EnglishController engCon;
-  EnglishViewer engViewer;
+  MenuController menuCon;
+  Viewer viewer;
 
   ArrayList<Word> wordsWithIndex;
   ArrayList<Word> wordList;
 
   public SearchController() {
-    engCon = new EnglishController();
-    engViewer = new EnglishViewer();
+    menuCon = new MenuController();
+    viewer = new Viewer();
 
     wordsWithIndex = new ArrayList<>();
-    wordList = engCon.getWordList();
+    wordList = menuCon.getWordList();
   }
 
-  // BUG: stack over flow
-  // must have no exit statement somewhere
   public void search() {
     String searchWord;
+    String cancelSearch = "c";
 
-    boolean found = false;
-    while (!found) {
-      searchWord = engViewer.searchViewer();
+    boolean isFound = false;
+    while (isFound) {
+      searchWord = viewer.searchViewer();
 
-      final String cancel = "c";
-      if (searchWord.equalsIgnoreCase(cancel)) {
-        System.out.println("Canceling Search");
-        break;
+      if (searchWord.equals(cancelSearch)) {
+        isFound = !isFound;
+        continue;
       }
 
-      int chosenIndex = -1;
-      switch (searchWord.length()) {
-        case 1:
-          chosenIndex = engViewer.searchView(oneChar(searchWord));
-          break;
-        case 2:
-          chosenIndex = engViewer.searchView(twoChar(searchWord.charAt(0), searchWord.charAt(1)));
-          break;
-        case 3:
-          chosenIndex =
-              engViewer.searchView(
-                  threeChar(searchWord.charAt(0), searchWord.charAt(1), searchWord.charAt(2)));
-          break;
-        default:
-          for (Word word : wordList) {
-            if (word.getWord().equalsIgnoreCase(searchWord)
-                || word.getDef1().equalsIgnoreCase(searchWord)
-                || word.getDef2().equalsIgnoreCase(searchWord)) {
-              System.out.println(word);
-              found = true;
-            } else {
-              System.out.println("No such word");
-            }
-            break;
-          }
-      } // switch
-      if (chosenIndex != -1) {
-        engViewer.showChosenIndex(chosenIndex - 1, wordsWithIndex);
+      Word searchResults = searchWord(searchWord);
+
+      if (searchResults != null) {
+        viewer.showSearchResults(searchResults);
       }
     }
   }
 
-  public ArrayList<Word> oneChar(String searchWord) {
+  // TODO: sliding search window
+  public Word searchWord(String searchWord) {
+    Word searchResults = new Word();
+
     for (Word word : wordList) {
-      if (word.getWord().charAt(0) == searchWord.charAt(0)) {
-        wordsWithIndex.add(
-            new Word(word.getWord(), word.getDef1(), word.getDef2(), word.getIndex()));
+      String textFromFile = word.getWord();
+
+      if (searchWord.equalsIgnoreCase(textFromFile)) {
+        searchResults.setWord(word.getWord());
+        searchResults.setDef1(word.getDef1());
+        searchResults.setDef2(word.getDef2());
       }
     }
-    return wordsWithIndex;
+
+    return searchResults;
   }
 
-  public ArrayList<Word> twoChar(char firstChar, char secondChar) {
-    wordsWithIndex.clear();
-    int j = 0;
-    for (Word word : wordList) {
-      for (int k = 0; k < word.getWord().length() - 1; k++) {
-        if (word.getWord().charAt(k) == firstChar && word.getWord().charAt(k + 1) == secondChar) {
-          j++;
-          wordsWithIndex.add(new Word(word.getWord(), word.getDef1(), word.getDef2(), j));
-        }
-      }
-    }
-    return wordsWithIndex;
-  }
-
-  public ArrayList<Word> threeChar(char firstChar, char secondChar, char thirdChar) {
-    wordsWithIndex.clear();
-    int j = 0;
-    for (Word word : wordList) {
-      for (int k = 0; k < word.getWord().length() - 2; k++) {
-        if (word.getWord().charAt(k) == firstChar
-            && word.getWord().charAt(k + 1) == secondChar
-            && word.getWord().charAt(k + 2) == thirdChar) {
-          j++;
-          wordsWithIndex.add(new Word(word.getWord(), word.getDef1(), word.getDef2(), j));
-        }
-      }
-    }
-    return wordsWithIndex;
-  }
+  public void searchDef() {}
 }

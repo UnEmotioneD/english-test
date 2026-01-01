@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import kr.or.iei.model.vo.Word;
 
-public class EnglishViewer {
+public class Viewer {
   Scanner sc;
 
-  public EnglishViewer() {
+  public Viewer() {
     sc = new Scanner(System.in);
   }
 
@@ -28,9 +28,20 @@ public class EnglishViewer {
   }
 
   public String searchViewer() {
-    System.out.println("Search Word / Cancel (w/c)");
-    System.out.print("=> ");
-    return sc.next();
+    String input = "";
+
+    System.out.println("Search Word / Cancel (w/c): ");
+    input = sc.next();
+    if (input.equalsIgnoreCase("c")) {
+      System.out.println("Canceling Search");
+    }
+    return input;
+  }
+
+  public void showSearchResults(Word word) {
+    System.out.println("=== Search Results ===");
+    System.out.println("Word: " + word.getWord());
+    System.out.println("Definitions: " + word.getDef1() + ", " + word.getDef2());
   }
 
   public String newWord() {
@@ -48,7 +59,7 @@ public class EnglishViewer {
   }
 
   public void addSuccess() {
-    System.out.println("New word and definitions successfully added");
+    System.out.println("New word added successfully!");
   }
 
   public String editViewer() {
