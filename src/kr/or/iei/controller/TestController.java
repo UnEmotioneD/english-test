@@ -1,5 +1,6 @@
 package kr.or.iei.controller;
 
+import kr.or.iei.common.Config;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.Viewer;
 
@@ -74,7 +75,7 @@ public class TestController {
         BufferedWriter bw = null;
 
         try {
-            FileWriter fw = new FileWriter(menuCon.getFailedWordFile(), true);
+            FileWriter fw = new FileWriter(Config.FAILED_WORD_FILE, true);
             bw = new BufferedWriter(fw);
 
             for (int k = 0; k < testList.size(); k++) {

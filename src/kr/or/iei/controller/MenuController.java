@@ -1,5 +1,6 @@
 package kr.or.iei.controller;
 
+import kr.or.iei.common.Config;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.Viewer;
 
@@ -11,9 +12,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuController {
-    private final String wordFile = "allDB.txt";
-    private final String failedWordFile = "failDB.txt";
-
     Scanner sc;
 
     Viewer viewer;
@@ -66,11 +64,11 @@ public class MenuController {
     }
 
     public void readWordFile() {
-        wordList = readFile(wordFile);
+        wordList = readFile(Config.WORD_FILE);
     }
 
     public void readFailedWordFile() {
-        failList = readFile(failedWordFile);
+        failList = readFile(Config.FAILED_WORD_FILE);
     }
 
     private ArrayList<Word> readFile(String fileName) {
@@ -94,14 +92,6 @@ public class MenuController {
             System.out.println("I/O Error");
         }
         return list;
-    }
-
-    public String getWordFile() {
-        return wordFile;
-    }
-
-    public String getFailedWordFile() {
-        return failedWordFile;
     }
 
     public ArrayList<Word> getWordList() {

@@ -1,5 +1,6 @@
 package kr.or.iei.controller;
 
+import kr.or.iei.common.Config;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.Viewer;
 
@@ -36,7 +37,7 @@ public class EditController {
 
     // WARN: added word might be duplicated
     public void add() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(menuCon.getWordFile(), true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Config.WORD_FILE, true))) {
             Word word = viewer.add();
             bw.newLine();
             bw.write(word.getWord() + "/" + word.getDef1() + "/" + word.getDef2());
