@@ -1,6 +1,7 @@
 package kr.or.iei.controller;
 
 import kr.or.iei.common.Config;
+import kr.or.iei.common.Util;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.Viewer;
 
@@ -16,6 +17,7 @@ public class TestController {
     MenuController menuCon;
     Viewer viewer;
 
+    Util util;
     ArrayList<Word> testList;
     ArrayList<Word> failList;
 
@@ -25,6 +27,7 @@ public class TestController {
         this.menuCon = menuCon;
         this.viewer = new Viewer();
 
+        util = new Util();
         testList = new ArrayList<>();
         failList = new ArrayList<>();
     }
@@ -100,5 +103,7 @@ public class TestController {
         }
     }
 
-    public void reTest() {}
+    public void reTest() {
+        failList = util.readFile(Config.FAILED_WORD_FILE);
+    }
 }
