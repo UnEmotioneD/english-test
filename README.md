@@ -129,7 +129,7 @@ javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
 
 ---
 
-- create a `.jar` files
+## Create .jar File
 
 ```bash
 jar --create --file english-test.jar \
@@ -145,4 +145,4 @@ java -jar english-test.jar
 
 ---
 
-### Happy Hacking! 🎉
+### Happy Hacking 🎉
