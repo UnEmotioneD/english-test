@@ -129,7 +129,9 @@ javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
 
 ---
 
-## Create .jar File
+## Create JAR
+
+Create `.jar` file
 
 ```bash
 jar --create --file english-test.jar \
@@ -137,7 +139,7 @@ jar --create --file english-test.jar \
     -C out .
 ```
 
-- run the `.jar` file
+Run created `.jar` file
 
 ```bash
 java -jar english-test.jar
