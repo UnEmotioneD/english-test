@@ -36,19 +36,38 @@ public class SearchController {
         }
     }
 
-    // TODO: sliding search window
+    // TODO: return more then one word
     public Word searchWord(String searchWord) {
         Word searchResults = new Word();
+        int searchWordLength = searchWord.length();
 
         for (Word word : menuCon.getWordList()) {
-            String textFromFile = word.getWord();
+            String wordFromFile = word.getWord();
+            int wordFromFileLength = wordFromFile.length();
 
-            if (searchWord.equalsIgnoreCase(textFromFile)) {
-                searchResults.setWord(word.getWord());
-                searchResults.setDef1(word.getDef1());
-                searchResults.setDef2(word.getDef2());
+            if (searchWordLength >= wordFromFileLength) {
+                continue;
 
-                return searchResults;
+                // BUG: if length is equal won't compare
+            } else if (searchWordLength == wordFromFileLength) {
+                if (searchWord.equalsIgnoreCase(wordFromFile)) {
+                    searchResults.setWord(word.getWord());
+                    searchResults.setDef1(word.getDef1());
+                    searchResults.setDef2(word.getDef2());
+
+                    return searchResults;
+                }
+            } else if (searchWordLength <= wordFromFileLength) {
+                for (int i = 0; i < wordFromFileLength - searchWordLength + 1; i++) {
+                    String subStr = wordFromFile.substring(i, i + searchWordLength);
+                    if (searchWord.equalsIgnoreCase(subStr)) {
+                        searchResults.setWord(word.getWord());
+                        searchResults.setDef1(word.getDef1());
+                        searchResults.setDef2(word.getDef2());
+
+                        return searchResults;
+                    }
+                }
             }
         }
         return null;
