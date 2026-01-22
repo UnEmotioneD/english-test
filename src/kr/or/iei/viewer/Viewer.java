@@ -29,13 +29,14 @@ public class Viewer {
     }
 
     public String searchViewer() {
-        System.out.println("Search Word / Cancel (w/c)");
+        System.out.println("Search Word / Cancel(C)");
         System.out.print("=> ");
         String input = sc.next();
-        if (input.equalsIgnoreCase("c")) {
-            System.out.println("Canceling Search");
-        }
         return input;
+    }
+
+    public void cancelSearch() {
+        System.out.println("Canceling Search");
     }
 
     public void showSearchResults(Word word) {

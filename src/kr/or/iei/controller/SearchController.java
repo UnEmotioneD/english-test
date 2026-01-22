@@ -14,7 +14,7 @@ public class SearchController {
 
     public void search() {
         String searchWord;
-        String cancelSearch = "c";
+        String cancelSearch = "C";
 
         boolean searching = true;
         while (searching) {
@@ -22,6 +22,7 @@ public class SearchController {
 
             if (searchWord.equals(cancelSearch)) {
                 searching = false;
+                viewer.cancelSearch();
                 continue;
             }
 
