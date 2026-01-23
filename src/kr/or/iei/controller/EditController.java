@@ -7,17 +7,12 @@ import kr.or.iei.viewer.Viewer;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class EditController {
-    Scanner sc;
-
     MenuController menuCon;
     Viewer viewer;
 
     public EditController(MenuController menuCon) {
-        sc = new Scanner(System.in);
-
         this.menuCon = menuCon;
         this.viewer = new Viewer();
     }
