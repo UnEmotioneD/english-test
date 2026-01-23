@@ -39,8 +39,11 @@ public class Viewer {
         System.out.println("Canceling Search");
     }
 
-    public void showSearchResults(Word word) {
+    public void searchResultsHeader() {
         System.out.println("=== Search Results ===");
+    }
+
+    public void showSearchResults(Word word) {
         System.out.println("Word: " + word.getWord());
         System.out.println("Definitions: " + word.getDef1() + ", " + word.getDef2());
     }

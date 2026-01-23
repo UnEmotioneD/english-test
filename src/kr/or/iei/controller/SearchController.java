@@ -3,6 +3,8 @@ package kr.or.iei.controller;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.Viewer;
 
+import java.util.ArrayList;
+
 public class SearchController {
     MenuController menuCon;
     Viewer viewer;
@@ -26,10 +28,13 @@ public class SearchController {
                 continue;
             }
 
-            Word searchResults = searchWord(searchWord);
+            ArrayList<Word> wordList = searchWord(searchWord);
 
-            if (searchResults != null) {
-                viewer.showSearchResults(searchResults);
+            if (!wordList.isEmpty()) {
+                viewer.searchResultsHeader();
+                for (Word word : wordList) {
+                    viewer.showSearchResults(word);
+                }
             } else {
                 viewer.noSearchResults(searchWord);
             }
