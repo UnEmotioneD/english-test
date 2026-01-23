@@ -1,42 +1,42 @@
 package kr.or.iei.controller;
 
 import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.Viewer;
+import kr.or.iei.viewer.SearchViewer;
 
 import java.util.ArrayList;
 
 public class SearchController {
     MenuController menuCon;
-    Viewer viewer;
+    SearchViewer searchViewer;
 
     public SearchController(MenuController menuCon) {
         this.menuCon = menuCon;
-        this.viewer = new Viewer();
+        this.searchViewer = new SearchViewer();
     }
 
     public void search() {
         String searchWord;
-        String cancelSearch = "C";
-
+        final String cancelSearch = "C";
         boolean searching = true;
+
         while (searching) {
-            searchWord = viewer.searchViewer();
+            searchWord = searchViewer.searchViewer(cancelSearch);
 
             if (searchWord.equals(cancelSearch)) {
                 searching = false;
-                viewer.cancelSearch();
+                searchViewer.cancelSearch();
                 continue;
             }
 
             ArrayList<Word> wordList = searchWord(searchWord);
 
             if (!wordList.isEmpty()) {
-                viewer.searchResultsHeader();
+                searchViewer.searchResultsHeader();
                 for (Word word : wordList) {
-                    viewer.showSearchResults(word);
+                    searchViewer.showSearchResults(word);
                 }
             } else {
-                viewer.noSearchResults(searchWord);
+                searchViewer.noSearchResults(searchWord);
             }
         }
     }

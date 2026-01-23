@@ -28,30 +28,6 @@ public class Viewer {
         System.out.println("Terminated");
     }
 
-    public String searchViewer() {
-        System.out.println("Search Word / Cancel(C)");
-        System.out.print("=> ");
-        String input = sc.next();
-        return input;
-    }
-
-    public void cancelSearch() {
-        System.out.println("Canceling Search");
-    }
-
-    public void searchResultsHeader() {
-        System.out.println("=== Search Results ===");
-    }
-
-    public void showSearchResults(Word word) {
-        System.out.println("Word: " + word.getWord());
-        System.out.println("Definitions: " + word.getDef1() + ", " + word.getDef2());
-    }
-
-    public void noSearchResults(String searchedWord) {
-        System.out.println("No such words: " + searchedWord);
-    }
-
     public String newWord() {
         System.out.print("New Word: ");
         return sc.next();
