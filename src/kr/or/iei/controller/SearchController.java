@@ -36,41 +36,40 @@ public class SearchController {
         }
     }
 
-    // TODO: return more then one word
-    public Word searchWord(String searchWord) {
-        Word searchResults = new Word();
+    public ArrayList<Word> searchWord(String searchWord) {
+        ArrayList<Word> searchResults = new ArrayList<>();
+        Word searchResult;
         int searchWordLength = searchWord.length();
 
         for (Word word : menuCon.getWordList()) {
             String wordFromFile = word.getWord();
             int wordFromFileLength = wordFromFile.length();
 
-            if (searchWordLength >= wordFromFileLength) {
+            if (searchWordLength > wordFromFileLength) {
                 continue;
-
-                // BUG: if length is equal won't compare
             } else if (searchWordLength == wordFromFileLength) {
                 if (searchWord.equalsIgnoreCase(wordFromFile)) {
-                    searchResults.setWord(word.getWord());
-                    searchResults.setDef1(word.getDef1());
-                    searchResults.setDef2(word.getDef2());
-
-                    return searchResults;
+                    searchResult = new Word();
+                    searchResult.setWord(word.getWord());
+                    searchResult.setDef1(word.getDef1());
+                    searchResult.setDef2(word.getDef2());
+                    searchResults.add(searchResult);
                 }
-            } else if (searchWordLength <= wordFromFileLength) {
+            } else if (searchWordLength < wordFromFileLength) {
                 for (int i = 0; i < wordFromFileLength - searchWordLength + 1; i++) {
                     String subStr = wordFromFile.substring(i, i + searchWordLength);
                     if (searchWord.equalsIgnoreCase(subStr)) {
-                        searchResults.setWord(word.getWord());
-                        searchResults.setDef1(word.getDef1());
-                        searchResults.setDef2(word.getDef2());
-
-                        return searchResults;
+                        searchResult = new Word();
+                        searchResult.setWord(word.getWord());
+                        searchResult.setDef1(word.getDef1());
+                        searchResult.setDef2(word.getDef2());
+                        searchResults.add(searchResult);
+                        break;
                     }
                 }
             }
         }
-        return null;
+        return searchResults;
     }
 
     public void searchDef() {}
