@@ -68,7 +68,7 @@
 
 - [x] Search with word
 - [ ] Search with definition
-- [ ] fuzzy search for word
+- [x] fuzzy search for word
 - [x] print no word exist message
 - [x] option to cancel search
 
