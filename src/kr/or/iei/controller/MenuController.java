@@ -6,11 +6,8 @@ import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.Viewer;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class MenuController {
-    Scanner sc;
-
     Viewer viewer;
     SearchController searchCon;
     EditController editCon;
@@ -20,8 +17,6 @@ public class MenuController {
     ArrayList<Word> wordList;
 
     public MenuController() {
-        sc = new Scanner(System.in);
-
         viewer = new Viewer();
         searchCon = new SearchController(this);
         editCon = new EditController(this);
