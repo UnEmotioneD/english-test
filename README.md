@@ -4,9 +4,20 @@
 - 입/출력 시, 문자 스트림 사용 (보조 스트림 사용)
 - ArrayList의 데이터가 변화되는 시점과 동시에 파일 내용에도 동기화 필요
 
+## Table of Contents
+
+- [1. 단어 검색](#1-단어-검색)
+- [2. 영단어 등록](#2-영단어-등록)
+- [3. 테스트](#3-테스트)
+- [4. 오답노트](#4-오답노트)
+- [5. 단어 수정 및 삭테](#5-단어-수정-및-삭제)
+- [TODO List](#todo-list)
+- [Compile and Run](#compile-and-run)
+- [Create Jar](#create-jar)
+
 ---
 
-## 1 단어 검색
+## 1. 단어 검색
 
 - 영단어 또는 뜻으로 검색
 
@@ -16,7 +27,7 @@
 
 - 단어 존재하지 않을 시, `없는 단어` 출력
 
-## 2 영단어 등록
+## 2. 영단어 등록
 
 - 단어 등록에 필요한 값 (영단어, 뜻1, 뜻2)은 사용자에게 입력받음
 
@@ -24,7 +35,7 @@
 
 - 뒤로가기 메뉴 존재
 
-## 3 테스트
+## 3. 테스트
 
 - 종류 : 영한테스트(영단어를 보여주고, 뜻을 맞추는 테스트), 한영테스트(뜻을 보여주고, 영단어를 맞추는 테스트)
   - 모든 테스트는 완벽히 일치하는 문자열 입력 시에만 통과. 단, 한영테스트는 대소문자 구분 없음.
@@ -37,7 +48,7 @@
 
 - 테스트 종료 메뉴 존재
 
-## 4 오답노트
+## 4. 오답노트
 
 1. 오답노트 보기 : 오답노트 전체 리스트를 넘버링하여 영단어만 출력 후
 2. 사용자에게 단어를 선택받은 뒤
@@ -49,7 +60,7 @@
 
 - 종료 : 종료 시, 성공한 문제들은 오답노트에서 제거
 
-## 5 단어 수정 및 삭제
+## 5. 단어 수정 및 삭제
 
 - 수정할 영단어를 입력받아, 뜻1과 뜻2을 수정
 
@@ -103,7 +114,7 @@
 
 ---
 
-## Compile & Run
+## Compile and Run
 
 - `find src -name "*.java"`: find all java files
 - `-d out`: compiled `.class` files into `out/` directory
@@ -133,24 +144,25 @@ javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
 
 After compiling
 
-Create `.jar` file:
+Create `.jar` file at bin/:
 
 ```bash
-jar --create --file english-test.jar \
-    --main-class kr.or.iei.start.Start \
-    -C out .
+jar --create \
+  --file bin/english-test.jar \
+  --main-class kr.or.iei.start.Start \
+  -C out .
 ```
 
 Or for order javac:
 
 ```sh
-jar -cfe english-test.jar kr.or.iei.start.Start -C out .
+jar -cfe bin/english-test.jar kr.or.iei.start.Start -C out .
 ```
 
 Run created `.jar` file
 
 ```bash
-java -jar english-test.jar
+java -jar bin/english-test.jar
 ```
 
 ---
