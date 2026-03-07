@@ -164,7 +164,3 @@ Run created `.jar` file
 ```bash
 java -jar bin/english-test.jar
 ```
-
----
-
-### Happy Hacking 🎉
