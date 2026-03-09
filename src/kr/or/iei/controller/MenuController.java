@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import kr.or.iei.common.Config;
 import kr.or.iei.common.Util;
 import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.Viewer;
+import kr.or.iei.viewer.MenuViewer;
 
 public class MenuController {
-  Viewer viewer;
+  MenuViewer mViewer;
   SearchController searchCon;
   EditController editCon;
   TestController testCon;
@@ -16,7 +16,7 @@ public class MenuController {
   ArrayList<Word> wordList;
 
   public MenuController() {
-    viewer = new Viewer();
+    mViewer = new MenuViewer();
     searchCon = new SearchController(this);
     editCon = new EditController(this);
     testCon = new TestController(this);
@@ -28,7 +28,7 @@ public class MenuController {
   public void mainMenu() {
     while (true) {
       readWordFile();
-      int menu = viewer.menu();
+      int menu = mViewer.menu();
       switch (menu) {
         case 1:
           searchCon.search();
@@ -46,7 +46,7 @@ public class MenuController {
           testCon.reTest();
           break;
         case 0:
-          viewer.terminated();
+          mViewer.terminated();
           return;
         default:
           break;
