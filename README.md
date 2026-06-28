@@ -116,14 +116,14 @@
 
 ## Compile and Run
 
-- `find src -name "*.java"`: find all java files
+- `find src -name "*.java"`: find all Java files
 - `-d out`: compiled `.class` files into `out/` directory
 
 ```bash
 javac -d out $(find src -name "*.java")
 ```
 
-- `Start`: java file with `psvm`
+- `Start`: Java file with `psvm`
 - `-cp`: classpath points to out which runs the compiled files
 
 ```bash
