@@ -14,8 +14,7 @@ public class SearchViewer {
     public String searchViewer(String cancel) {
         System.out.println("Search Word / Cancel(" + cancel + ")");
         System.out.print("=> ");
-        String input = sc.next();
-        return input;
+        return sc.next();
     }
 
     public void cancelSearch() {

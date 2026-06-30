@@ -158,7 +158,7 @@ output/생산량/출력해내다
 official/임원/공식적인
 original/원래의/독창적인
 occasion/행사/원인이되다
-overcom/극복하다/이기다
+overcome/극복하다/이기다
 pass/지나가다/통과하다
 place/장소/놓다
 point/의견/가리키다
