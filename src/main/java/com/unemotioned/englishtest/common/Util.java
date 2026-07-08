@@ -1,11 +1,11 @@
-package kr.or.iei.common;
+package com.unemotioned.englishtest.common;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import kr.or.iei.model.vo.Word;
+import com.unemotioned.englishtest.model.vo.Word;
 
 public class Util {
     public ArrayList<Word> readFile(String fileName) {
@@ -20,7 +20,7 @@ public class Util {
                 // construct Word object with it
                 // put Word obj into ArrayList
                 String[] wordArr = line.split("/");
-                list.add(new Word(wordArr[0], wordArr[1], wordArr[2]));
+                list.add(new Word(wordArr[0], wordArr[1], wordArr[2], 0));
             }
 
         } catch (FileNotFoundException e) {

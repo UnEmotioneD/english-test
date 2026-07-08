@@ -1,10 +1,10 @@
-package kr.or.iei.controller;
+package com.unemotioned.englishtest.controller;
 
 import java.util.ArrayList;
-import kr.or.iei.common.Config;
-import kr.or.iei.common.Util;
-import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.MenuViewer;
+import com.unemotioned.englishtest.common.Config;
+import com.unemotioned.englishtest.common.Util;
+import com.unemotioned.englishtest.model.vo.Word;
+import com.unemotioned.englishtest.viewer.MenuViewer;
 
 public class MenuController {
     MenuViewer mViewer;

@@ -1,4 +1,4 @@
-package kr.or.iei.common;
+package com.unemotioned.englishtest.common;
 
 public class Config {
     public static final String WORD_FILE = "allDB.txt";

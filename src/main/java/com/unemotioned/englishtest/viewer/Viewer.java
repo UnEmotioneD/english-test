@@ -1,8 +1,8 @@
-package kr.or.iei.viewer;
+package com.unemotioned.englishtest.viewer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import kr.or.iei.model.vo.Word;
+import com.unemotioned.englishtest.model.vo.Word;
 
 public class Viewer {
     Scanner sc;

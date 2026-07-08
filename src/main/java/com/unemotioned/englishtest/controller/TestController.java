@@ -1,4 +1,4 @@
-package kr.or.iei.controller;
+package com.unemotioned.englishtest.controller;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import kr.or.iei.common.Config;
-import kr.or.iei.common.Util;
-import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.Viewer;
+import com.unemotioned.englishtest.common.Config;
+import com.unemotioned.englishtest.common.Util;
+import com.unemotioned.englishtest.model.vo.Word;
+import com.unemotioned.englishtest.viewer.Viewer;
 
 public class TestController {
     Scanner sc;

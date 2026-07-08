@@ -1,4 +1,4 @@
-package kr.or.iei.viewer;
+package com.unemotioned.englishtest.viewer;
 
 import java.util.Scanner;
 

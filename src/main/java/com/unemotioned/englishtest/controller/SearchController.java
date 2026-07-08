@@ -1,8 +1,8 @@
-package kr.or.iei.controller;
+package com.unemotioned.englishtest.controller;
 
 import java.util.ArrayList;
-import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.SearchViewer;
+import com.unemotioned.englishtest.model.vo.Word;
+import com.unemotioned.englishtest.viewer.SearchViewer;
 
 public class SearchController {
     MenuController menuCon;
