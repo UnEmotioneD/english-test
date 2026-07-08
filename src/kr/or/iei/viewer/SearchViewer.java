@@ -1,8 +1,7 @@
 package kr.or.iei.viewer;
 
-import kr.or.iei.model.vo.Word;
-
 import java.util.Scanner;
+import kr.or.iei.model.vo.Word;
 
 public class SearchViewer {
     Scanner sc;

@@ -1,11 +1,10 @@
 package kr.or.iei.controller;
 
+import java.util.ArrayList;
 import kr.or.iei.common.Config;
 import kr.or.iei.common.Util;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.MenuViewer;
-
-import java.util.ArrayList;
 
 public class MenuController {
     MenuViewer mViewer;

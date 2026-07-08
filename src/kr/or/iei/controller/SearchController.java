@@ -1,9 +1,8 @@
 package kr.or.iei.controller;
 
+import java.util.ArrayList;
 import kr.or.iei.model.vo.Word;
 import kr.or.iei.viewer.SearchViewer;
-
-import java.util.ArrayList;
 
 public class SearchController {
     MenuController menuCon;

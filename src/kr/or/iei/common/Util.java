@@ -1,12 +1,11 @@
 package kr.or.iei.common;
 
-import kr.or.iei.model.vo.Word;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import kr.or.iei.model.vo.Word;
 
 public class Util {
     public ArrayList<Word> readFile(String fileName) {

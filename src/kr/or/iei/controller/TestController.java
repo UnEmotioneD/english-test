@@ -1,16 +1,15 @@
 package kr.or.iei.controller;
 
-import kr.or.iei.common.Config;
-import kr.or.iei.common.Util;
-import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.Viewer;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import kr.or.iei.common.Config;
+import kr.or.iei.common.Util;
+import kr.or.iei.model.vo.Word;
+import kr.or.iei.viewer.Viewer;
 
 public class TestController {
     Scanner sc;
@@ -56,7 +55,8 @@ public class TestController {
             final String korSelected = "k";
 
             if (selWord.equalsIgnoreCase(engSelected)) {
-                System.out.println(list.get(ran[j]).getDef1() + "\t" + list.get(ran[j]).getDef2());
+                System.out.println(
+                        list.get(ran[j]).getDef1() + "\t" + list.get(ran[j]).getDef2());
                 String answer = viewer.randomTest();
 
                 if (!answer.equals(list.get(ran[j]).getWord())) {

@@ -1,13 +1,12 @@
 package kr.or.iei.controller;
 
-import kr.or.iei.common.Config;
-import kr.or.iei.model.vo.Word;
-import kr.or.iei.viewer.Viewer;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import kr.or.iei.common.Config;
+import kr.or.iei.model.vo.Word;
+import kr.or.iei.viewer.Viewer;
 
 public class EditController {
     Scanner sc;
