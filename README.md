@@ -4,6 +4,8 @@
 - 입/출력 시, 문자 스트림 사용 (보조 스트림 사용)
 - ArrayList의 데이터가 변화되는 시점과 동시에 파일 내용에도 동기화 필요
 
+<!-- TODO: link to MDs at archive/ -->
+
 ## Table of Contents
 
 - [1. 단어 검색](#1-단어-검색)
@@ -12,8 +14,6 @@
 - [4. 오답노트](#4-오답노트)
 - [5. 단어 수정 및 삭테](#5-단어-수정-및-삭제)
 - [TODO List](#todo-list)
-- [Compile and Run](#compile-and-run)
-- [Create Jar](#create-jar)
 
 ---
 
@@ -111,56 +111,3 @@
 - [ ] search word to delete by word
 - [ ] if more then one word is searched number it and take input
 - [ ] option to delete all
-
----
-
-## Compile and Run
-
-- `find src -name "*.java"`: find all Java files
-- `-d out`: compiled `.class` files into `out/` directory
-
-```bash
-javac -d out $(find src -name "*.java")
-```
-
-- `Start`: Java file with `psvm`
-- `-cp`: classpath points to out which runs the compiled files
-
-```bash
-java -cp out kr.or.iei.start.Start
-```
-
-This will run the project
-
-In one line:
-
-```bash
-javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
-```
-
----
-
-## Create JAR
-
-After compiling
-
-Create `.jar` file at bin/:
-
-```bash
-jar --create \
-  --file bin/english-test.jar \
-  --main-class kr.or.iei.start.Start \
-  -C out .
-```
-
-Or for older javac:
-
-```sh
-jar -cfe bin/english-test.jar kr.or.iei.start.Start -C out .
-```
-
-Run created `.jar` file
-
-```bash
-java -jar bin/english-test.jar
-```
