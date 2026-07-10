@@ -6,8 +6,7 @@
 
 - [Install Maven](#install-maven)
 - [Create Project](#create-project)
-- [Dependency](#dependency)
-  - [Lombok](#lombok)
+- [Build and Run](#build-and-run)
 
 ---
 
@@ -37,35 +36,59 @@ mvn --version
 
 ```sh
 mvn archetype:generate \
-    -DgroupId=com.unemotioned.englshtest \
+    -DgroupId=com.unemotioned.englishtest \
     -DartifactId=english-test \
     -DarchetypeArtifactId=maven-archetype-quickstart \
     -DarchetypeVersion=1.5 \
     -DinteractiveMode=false
 ```
 
-- Structure: `src/main/com/unemotioned/englishtest/EnglishTest.java`
-- EnglishTest.java is the `Main` class
+- Structure: `src/main/com/unemotioned/englishtest/App.java`
 
-Create **Controller**, **Service**, **Model.vo** and etc under the `englishtest`
-directory.
+Under `com.unemotioned.englishtest`, create **Controller**, **Service**, **Model.vo** etc.
 
 ---
 
-<!-- TODO: document further down -->
-
 ## Build and Run
+
+- **clean**: Remove previously built artifacts (`target` directory).
+- **package**: Output JAR file under target directory.
 
 ```sh
 mvn clean package
 ```
 
+Runs the
+
 ```sh
 java -jar target/<pkg-name>.jar
 ```
 
----
+### Exec Maven Plugin
 
-## Dependency
+**_A plugin to allow execution of system and Java programs._**
 
-### Lombok
+1. Get it from [Maven Repository](https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin).
+2. Add it to **pom.xml** inside `build.plugins` tags.
+3. Inside the **&lt;plugin&gt;** add `configuration.mainClass` tags with path of main class.
+
+```xml
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.6.3</version>
+    <configuration>
+        <mainClass>com.unemotioned.englishtest.App</mainClass>
+    </configuration>
+</plugin>
+```
+
+#### Terminal Command
+
+Do **clean** and **package** first.
+
+Then run with `exec` command:
+
+```sh
+mvn exec:java
+```
