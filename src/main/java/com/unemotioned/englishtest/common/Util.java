@@ -1,11 +1,11 @@
 package com.unemotioned.englishtest.common;
 
+import com.unemotioned.englishtest.model.vo.Word;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import com.unemotioned.englishtest.model.vo.Word;
 
 public class Util {
     public ArrayList<Word> readFile(String fileName) {
@@ -29,5 +29,21 @@ public class Util {
             System.out.println("I/O Error");
         }
         return list;
+    }
+
+    public void clearTerminal() {
+        try {
+            String os = System.getProperty("os.name");
+            System.out.println(os);
+
+            if (os.contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
+        } catch (IOException | InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.print("clearTerminal() failed." + e);
+        }
     }
 }
