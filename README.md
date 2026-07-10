@@ -15,6 +15,11 @@
 - [5. 단어 수정 및 삭테](#5-단어-수정-및-삭제)
 - [TODO List](#todo-list)
 
+## Archive
+
+- [Run without build tools](./archive/compile.md)
+- [Run with maven](./archive/maven.md)
+
 ---
 
 ## 1. 단어 검색
