@@ -53,6 +53,15 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <mainClass>com.unemotioned.englishtest.App</mainClass>
+                </configuration>
+            </plugin>
+
             <!-- hooks Lombok into javac's AST to generate getters/constructors etc. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
