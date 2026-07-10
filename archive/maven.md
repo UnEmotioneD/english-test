@@ -45,7 +45,8 @@ mvn archetype:generate \
 
 - Structure: `src/main/com/unemotioned/englishtest/App.java`
 
-Under `com.unemotioned.englishtest`, create **Controller**, **Service**, **Model.vo** etc.
+Under `com.unemotioned.englishtest`, create **Controller**, **Service**,
+**Model.vo** etc.
 
 ---
 
@@ -70,7 +71,8 @@ java -jar target/<pkg-name>.jar
 
 1. Get it from [Maven Repository](https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin).
 2. Add it to **pom.xml** inside `build.plugins` tags.
-3. Inside the **&lt;plugin&gt;** add `configuration.mainClass` tags with path of main class.
+3. Inside the **&lt;plugin&gt;** add `configuration.mainClass` tags with path of
+   main class.
 
 ```xml
 <plugin>
