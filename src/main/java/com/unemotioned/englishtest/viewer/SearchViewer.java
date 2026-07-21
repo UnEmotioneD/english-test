@@ -1,7 +1,7 @@
 package com.unemotioned.englishtest.viewer;
 
-import java.util.Scanner;
 import com.unemotioned.englishtest.model.vo.Word;
+import java.util.Scanner;
 
 public class SearchViewer {
     Scanner sc;

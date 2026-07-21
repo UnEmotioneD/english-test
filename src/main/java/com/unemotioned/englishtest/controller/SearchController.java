@@ -1,8 +1,8 @@
 package com.unemotioned.englishtest.controller;
 
-import java.util.ArrayList;
 import com.unemotioned.englishtest.model.vo.Word;
 import com.unemotioned.englishtest.viewer.SearchViewer;
+import java.util.ArrayList;
 
 public class SearchController {
     MenuController menuCon;

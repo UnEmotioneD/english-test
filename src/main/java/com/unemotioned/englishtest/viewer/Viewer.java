@@ -1,8 +1,8 @@
 package com.unemotioned.englishtest.viewer;
 
+import com.unemotioned.englishtest.model.vo.Word;
 import java.util.ArrayList;
 import java.util.Scanner;
-import com.unemotioned.englishtest.model.vo.Word;
 
 public class Viewer {
     Scanner sc;

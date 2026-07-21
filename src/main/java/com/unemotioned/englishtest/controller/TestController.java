@@ -1,15 +1,15 @@
 package com.unemotioned.englishtest.controller;
 
+import com.unemotioned.englishtest.common.Config;
+import com.unemotioned.englishtest.common.Util;
+import com.unemotioned.englishtest.model.vo.Word;
+import com.unemotioned.englishtest.viewer.Viewer;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import com.unemotioned.englishtest.common.Config;
-import com.unemotioned.englishtest.common.Util;
-import com.unemotioned.englishtest.model.vo.Word;
-import com.unemotioned.englishtest.viewer.Viewer;
 
 public class TestController {
     Scanner sc;

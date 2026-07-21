@@ -1,10 +1,10 @@
 package com.unemotioned.englishtest.controller;
 
-import java.util.ArrayList;
 import com.unemotioned.englishtest.common.Config;
 import com.unemotioned.englishtest.common.Util;
 import com.unemotioned.englishtest.model.vo.Word;
 import com.unemotioned.englishtest.viewer.MenuViewer;
+import java.util.ArrayList;
 
 public class MenuController {
     MenuViewer mViewer;
