@@ -4,6 +4,8 @@ import com.unemotioned.englishtest.common.Config;
 import com.unemotioned.englishtest.common.Util;
 import com.unemotioned.englishtest.model.vo.Word;
 import com.unemotioned.englishtest.viewer.MenuViewer;
+import lombok.Getter;
+
 import java.util.ArrayList;
 
 public class MenuController {
@@ -13,6 +15,8 @@ public class MenuController {
     TestController testCon;
 
     Util util;
+
+    @Getter
     ArrayList<Word> wordList;
 
     public MenuController() {
@@ -27,7 +31,8 @@ public class MenuController {
 
     public void mainMenu() {
         while (true) {
-            readWordFile();
+            wordList = util.readFile(Config.WORD_FILE);
+
             int menu = mViewer.menu();
             switch (menu) {
                 case 1:
@@ -52,13 +57,5 @@ public class MenuController {
                     break;
             }
         }
-    }
-
-    public void readWordFile() {
-        wordList = util.readFile(Config.WORD_FILE);
-    }
-
-    public ArrayList<Word> getWordList() {
-        return wordList;
     }
 }

@@ -16,7 +16,7 @@ public class EditController {
     public EditController(MenuController menuCon) {
         sc = new Scanner(System.in);
         this.menuCon = menuCon;
-        this.viewer = new Viewer();
+        viewer = new Viewer();
     }
 
     public void newWord() {
@@ -32,7 +32,7 @@ public class EditController {
         }
     }
 
-    // WARN: added word might be duplicated
+    // TODO: check duplication before adding
     public void add() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(Config.WORD_FILE, true))) {
             Word word = viewer.add();

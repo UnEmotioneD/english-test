@@ -19,21 +19,21 @@ public class TestController {
     Util util;
     ArrayList<Word> testList;
     ArrayList<Word> failList;
+    ArrayList<Word> list;
 
     public TestController(MenuController menuCon) {
         sc = new Scanner(System.in);
 
         this.menuCon = menuCon;
-        this.viewer = new Viewer();
+        viewer = new Viewer();
 
         util = new Util();
         testList = new ArrayList<>();
         failList = new ArrayList<>();
+        list = new ArrayList<>();
     }
 
     public void test() {
-        ArrayList<Word> list = new ArrayList<>();
-
         System.out.println(failList);
 
         Random random = new Random();

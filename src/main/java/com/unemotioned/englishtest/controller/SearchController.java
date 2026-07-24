@@ -10,21 +10,18 @@ public class SearchController {
 
     public SearchController(MenuController menuCon) {
         this.menuCon = menuCon;
-        this.searchViewer = new SearchViewer();
+        searchViewer = new SearchViewer();
     }
 
     public void search() {
         String searchWord;
-        final String cancelSearch = "C";
-        boolean searching = true;
 
-        while (searching) {
-            searchWord = searchViewer.searchViewer(cancelSearch);
+        while (true) {
+            searchWord = searchViewer.searchViewer();
 
-            if (searchWord.equals(cancelSearch)) {
-                searching = false;
+            if (searchWord.equals("C")) {
                 searchViewer.cancelSearch();
-                continue;
+                break;
             }
 
             ArrayList<Word> wordList = searchWord(searchWord);
@@ -40,7 +37,7 @@ public class SearchController {
         }
     }
 
-    public ArrayList<Word> searchWord(String searchWord) {
+    private ArrayList<Word> searchWord(String searchWord) {
         ArrayList<Word> searchResults = new ArrayList<>();
         Word searchResult;
         int searchWordLength = searchWord.length();
@@ -49,9 +46,7 @@ public class SearchController {
             String wordFromFile = word.getWord();
             int wordFromFileLength = wordFromFile.length();
 
-            if (searchWordLength > wordFromFileLength) {
-                continue;
-            } else if (searchWordLength == wordFromFileLength) {
+            if (searchWordLength == wordFromFileLength) {
                 if (searchWord.equalsIgnoreCase(wordFromFile)) {
                     searchResult = new Word();
                     searchResult.setWord(word.getWord());
@@ -76,5 +71,5 @@ public class SearchController {
         return searchResults;
     }
 
-    public void searchDef() {}
+    private void searchDef() {}
 }

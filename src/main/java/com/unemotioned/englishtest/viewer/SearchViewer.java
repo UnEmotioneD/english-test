@@ -10,8 +10,8 @@ public class SearchViewer {
         sc = new Scanner(System.in);
     }
 
-    public String searchViewer(String cancel) {
-        System.out.println("Search Word / Cancel(" + cancel + ")");
+    public String searchViewer() {
+        System.out.println("Search Word / Cancel(C)");
         System.out.print("=> ");
         return sc.next();
     }

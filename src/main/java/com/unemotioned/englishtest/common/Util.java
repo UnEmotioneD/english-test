@@ -34,7 +34,6 @@ public class Util {
     public void clearTerminal() {
         try {
             String os = System.getProperty("os.name");
-            System.out.println(os);
 
             if (os.contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -43,7 +42,7 @@ public class Util {
             }
         } catch (IOException | InterruptedException e) {
             Thread.currentThread().interrupt();
-            System.out.print("clearTerminal() failed." + e);
+            System.out.println("clearTerminal() failed." + e);
         }
     }
 }
