@@ -1,7 +1,6 @@
 # Compile
 
-> **NOTE**
->
+> [!NOTE]
 > Deprecated after switch to **_Maven_**.
 
 ---
@@ -34,8 +33,7 @@ javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
 
 ## Create JAR
 
-> **NOTE**
->
+> [!NOTE]
 > Deprecated after switched to **Maven**.
 
 After compiling

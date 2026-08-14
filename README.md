@@ -4,7 +4,10 @@
 - 입/출력 시, 문자 스트림 사용 (보조 스트림 사용)
 - ArrayList의 데이터가 변화되는 시점과 동시에 파일 내용에도 동기화 필요
 
-<!-- TODO: link to MDs at archive/ -->
+## Archive
+
+- [Run without build tools](./archive/compile.md)
+- [Run with maven](./archive/maven.md)
 
 ## Table of Contents
 
@@ -14,11 +17,6 @@
 - [4. 오답노트](#4-오답노트)
 - [5. 단어 수정 및 삭테](#5-단어-수정-및-삭제)
 - [TODO List](#todo-list)
-
-## Archive
-
-- [Run without build tools](./archive/compile.md)
-- [Run with maven](./archive/maven.md)
 
 ---
 
