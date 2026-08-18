@@ -1,7 +1,6 @@
 # Compile
 
-> [!NOTE]
-> Deprecated after switch to **_Maven_**.
+Archived after switching to maven.
 
 ---
 
@@ -33,12 +32,9 @@ javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
 
 ## Create JAR
 
-> [!NOTE]
-> Deprecated after switched to **Maven**.
+After compile.
 
-After compiling
-
-Create `.jar` file at bin/:
+Creates `.jar` file at **bin** directory:
 
 ```bash
 jar --create \
@@ -53,7 +49,7 @@ Or for older javac:
 jar -cfe bin/english-test.jar kr.or.iei.start.Start -C out .
 ```
 
-Run created `.jar` file
+Run created `.jar` file:
 
 ```bash
 java -jar bin/english-test.jar

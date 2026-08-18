@@ -1,8 +1,12 @@
 # Maven
 
-[Apache Maven in 5 Minute](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+How to initialize **maven** project.
 
-## Table of Content
+## Reference
+
+- [Apache Maven in 5 Minute](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+
+## Table of Contents
 
 - [Install Maven](#install-maven)
 - [Create Project](#create-project)
