@@ -8,6 +8,10 @@
 .factorypath
 .project
 
-.vscode/
+.vscode/**
+!.vscode/settings.json
+
+.zed/**
+!.zed/settings.json
 
 target/
