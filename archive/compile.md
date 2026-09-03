@@ -1,10 +1,10 @@
-# Compile
+# Compilation
 
 Archived after switching to maven.
 
 ---
 
-## Compile and Run
+## Compile
 
 - `find src -name "*.java"`: find all Java files
 - `-d out`: compiled `.class` files into `out/` directory
@@ -13,6 +13,8 @@ Archived after switching to maven.
 javac -d out $(find src -name "*.java")
 ```
 
+## Run
+
 - `Start`: Java file with `psvm`
 - `-cp`: classpath points to out which runs the compiled files
 
@@ -20,9 +22,7 @@ javac -d out $(find src -name "*.java")
 java -cp out kr.or.iei.start.Start
 ```
 
-This will run the project
-
-In one line:
+### One Liner
 
 ```bash
 javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
@@ -30,9 +30,9 @@ javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
 
 ---
 
-## Create JAR
+## JAR
 
-After compile.
+After [compile](#compile).
 
 Creates `.jar` file at **bin** directory:
 
@@ -41,12 +41,6 @@ jar --create \
     --file bin/english-test.jar \
     --main-class kr.or.iei.start.Start \
     -C out .
-```
-
-Or for older javac:
-
-```sh
-jar -cfe bin/english-test.jar kr.or.iei.start.Start -C out .
 ```
 
 Run created `.jar` file:
