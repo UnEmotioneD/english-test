@@ -15,7 +15,7 @@
 - [2. 영단어 등록](#2-영단어-등록)
 - [3. 테스트](#3-테스트)
 - [4. 오답노트](#4-오답노트)
-- [5. 단어 수정 및 삭테](#5-단어-수정-및-삭제)
+- [5. 단어 수정 및 삭제](#5-단어-수정-및-삭제)
 - [TODO List](#todo-list)
 
 ---
@@ -88,7 +88,7 @@
 
 ### Add
 
-- [x] get input for word, 2 definitions
+- [x] get inputs of 1 word and 2 definitions
 - [ ] check duplication before adding
 - [ ] option to cancel add
 
@@ -112,5 +112,5 @@
 
 - [ ] search word to edit by word and change definitions without duplication
 - [ ] search word to delete by word
-- [ ] if more then one word is searched number it and take input
+- [ ] if more then one word is searched, number it and prompt for input
 - [ ] option to delete all
