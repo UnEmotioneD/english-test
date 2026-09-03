@@ -8,6 +8,9 @@ public class SearchController {
     MenuController menuCon;
     SearchViewer searchViewer;
 
+    final short asciiLowerA = 65;
+    final short asciiUpperZ = 122;
+
     public SearchController(MenuController menuCon) {
         this.menuCon = menuCon;
         searchViewer = new SearchViewer();
@@ -15,6 +18,7 @@ public class SearchController {
 
     public void search() {
         String searchWord;
+        ArrayList<Word> wordList;
 
         while (true) {
             searchWord = searchViewer.searchViewer();
@@ -24,7 +28,12 @@ public class SearchController {
                 break;
             }
 
-            ArrayList<Word> wordList = searchWord(searchWord);
+            // if input is english
+            if (searchWord.charAt(0) >= asciiLowerA && searchWord.charAt(0) <= asciiUpperZ) {
+                wordList = searchWord(searchWord);
+            } else {
+                wordList = searchDef(searchWord);
+            }
 
             if (!wordList.isEmpty()) {
                 searchViewer.searchResultsHeader();
@@ -51,5 +60,23 @@ public class SearchController {
         return searchResults;
     }
 
-    private void searchDef() {}
+    private ArrayList<Word> searchDef(String searchDef) {
+        ArrayList<Word> searchResults = new ArrayList<>();
+
+        for (Word word : menuCon.getWordList()) {
+            String def1 = word.getDef1();
+            String def2 = word.getDef2();
+
+            if (def1.toLowerCase().contains(searchDef)) {
+                searchResults.add(word);
+                continue;
+            }
+
+            if (def2.toLowerCase().contains(searchDef)) {
+                searchResults.add(word);
+            }
+        }
+
+        return searchResults;
+    }
 }
