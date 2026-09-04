@@ -1,6 +1,6 @@
 package com.unemotioned.englishtest.common;
 
-import com.unemotioned.englishtest.model.vo.Word;
+import com.unemotioned.englishtest.common.vo.Word;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

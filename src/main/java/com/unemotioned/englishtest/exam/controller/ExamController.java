@@ -1,9 +1,10 @@
-package com.unemotioned.englishtest.controller;
+package com.unemotioned.englishtest.exam.controller;
 
 import com.unemotioned.englishtest.common.Config;
 import com.unemotioned.englishtest.common.Util;
-import com.unemotioned.englishtest.model.vo.Word;
-import com.unemotioned.englishtest.viewer.Viewer;
+import com.unemotioned.englishtest.menu.controller.MenuController;
+import com.unemotioned.englishtest.common.vo.Word;
+import com.unemotioned.englishtest.exam.viewer.ExamViewer;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,21 +12,21 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class TestController {
+public class ExamController {
     Scanner sc;
     MenuController menuCon;
-    Viewer viewer;
+    ExamViewer examViewer;
 
     Util util;
     ArrayList<Word> testList;
     ArrayList<Word> failList;
     ArrayList<Word> list;
 
-    public TestController(MenuController menuCon) {
+    public ExamController(MenuController menuCon) {
         sc = new Scanner(System.in);
 
         this.menuCon = menuCon;
-        viewer = new Viewer();
+        examViewer = new ExamViewer();
 
         util = new Util();
         testList = new ArrayList<>();
@@ -37,8 +38,8 @@ public class TestController {
         System.out.println(failList);
 
         Random random = new Random();
-        String selWord = viewer.startTest();
-        int ranNum = viewer.random();
+        String selWord = examViewer.startTest();
+        int ranNum = examViewer.random();
         int[] ran = new int[ranNum];
 
         for (int j = 0; j < ran.length; j++) {
@@ -57,7 +58,7 @@ public class TestController {
             if (selWord.equalsIgnoreCase(engSelected)) {
                 System.out.println(
                         list.get(ran[j]).getDef1() + "\t" + list.get(ran[j]).getDef2());
-                String answer = viewer.randomTest();
+                String answer = examViewer.randomTest();
 
                 if (!answer.equals(list.get(ran[j]).getWord())) {
                     testList.add(list.get(ran[j]));
@@ -65,7 +66,7 @@ public class TestController {
 
             } else if (selWord.equalsIgnoreCase(korSelected)) {
                 System.out.println(list.get(ran[j]).getWord());
-                String answer = viewer.randomTest();
+                String answer = examViewer.randomTest();
 
                 if (!answer.equals(list.get(ran[j]).getDef1())
                         || !answer.equals(list.get(ran[j]).getDef2())) {

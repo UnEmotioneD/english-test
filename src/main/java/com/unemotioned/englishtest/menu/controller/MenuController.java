@@ -1,9 +1,12 @@
-package com.unemotioned.englishtest.controller;
+package com.unemotioned.englishtest.menu.controller;
 
 import com.unemotioned.englishtest.common.Config;
 import com.unemotioned.englishtest.common.Util;
-import com.unemotioned.englishtest.model.vo.Word;
-import com.unemotioned.englishtest.viewer.MenuViewer;
+import com.unemotioned.englishtest.search.controller.SearchController;
+import com.unemotioned.englishtest.exam.controller.ExamController;
+import com.unemotioned.englishtest.edit.controller.EditController;
+import com.unemotioned.englishtest.common.vo.Word;
+import com.unemotioned.englishtest.menu.viewer.MenuViewer;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -12,7 +15,7 @@ public class MenuController {
     MenuViewer mViewer;
     SearchController searchCon;
     EditController editCon;
-    TestController testCon;
+    ExamController testCon;
 
     Util util;
 
@@ -23,7 +26,7 @@ public class MenuController {
         mViewer = new MenuViewer();
         searchCon = new SearchController(this);
         editCon = new EditController(this);
-        testCon = new TestController(this);
+        testCon = new ExamController(this);
 
         util = new Util();
         wordList = new ArrayList<>();

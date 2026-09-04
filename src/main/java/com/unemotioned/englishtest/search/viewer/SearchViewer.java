@@ -1,6 +1,6 @@
-package com.unemotioned.englishtest.viewer;
+package com.unemotioned.englishtest.search.viewer;
 
-import com.unemotioned.englishtest.model.vo.Word;
+import com.unemotioned.englishtest.common.vo.Word;
 import java.util.Scanner;
 
 public class SearchViewer {

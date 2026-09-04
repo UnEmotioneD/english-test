@@ -1,4 +1,4 @@
-package com.unemotioned.englishtest.viewer;
+package com.unemotioned.englishtest.menu.viewer;
 
 import com.unemotioned.englishtest.common.Util;
 import java.util.Scanner;

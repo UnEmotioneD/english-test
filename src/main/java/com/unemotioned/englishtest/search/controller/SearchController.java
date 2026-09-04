@@ -1,7 +1,8 @@
-package com.unemotioned.englishtest.controller;
+package com.unemotioned.englishtest.search.controller;
 
-import com.unemotioned.englishtest.model.vo.Word;
-import com.unemotioned.englishtest.viewer.SearchViewer;
+import com.unemotioned.englishtest.menu.controller.MenuController;
+import com.unemotioned.englishtest.common.vo.Word;
+import com.unemotioned.englishtest.search.viewer.SearchViewer;
 import java.util.ArrayList;
 
 public class SearchController {

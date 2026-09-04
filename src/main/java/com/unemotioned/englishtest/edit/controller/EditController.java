@@ -1,8 +1,9 @@
-package com.unemotioned.englishtest.controller;
+package com.unemotioned.englishtest.edit.controller;
 
 import com.unemotioned.englishtest.common.Config;
-import com.unemotioned.englishtest.model.vo.Word;
-import com.unemotioned.englishtest.viewer.Viewer;
+import com.unemotioned.englishtest.menu.controller.MenuController;
+import com.unemotioned.englishtest.common.vo.Word;
+import com.unemotioned.englishtest.edit.viewer.EditViewer;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,20 +12,20 @@ import java.util.Scanner;
 public class EditController {
     Scanner sc;
     MenuController menuCon;
-    Viewer viewer;
+    EditViewer editViewer;
 
     public EditController(MenuController menuCon) {
         sc = new Scanner(System.in);
         this.menuCon = menuCon;
-        viewer = new Viewer();
+        editViewer = new EditViewer();
     }
 
     public void newWord() {
-        String newWord = viewer.newWord();
+        String newWord = editViewer.newWord();
 
         for (Word word : menuCon.getWordList()) {
             if (word.getWord().equalsIgnoreCase(newWord)) {
-                viewer.dupWord();
+                editViewer.dupWord();
                 return;
             } else {
                 // TODO: get two different definitions
@@ -35,17 +36,17 @@ public class EditController {
     // TODO: check duplication before adding
     public void add() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(Config.WORD_FILE, true))) {
-            Word word = viewer.add();
+            Word word = editViewer.add();
             bw.newLine();
             bw.write(word.getWord() + "/" + word.getDef1() + "/" + word.getDef2());
-            viewer.addSuccess();
+            editViewer.addSuccess();
         } catch (IOException e) {
             System.out.println("I/O Error");
         }
     }
 
     public void edit() {
-        String editWord = viewer.editViewer();
+        String editWord = editViewer.editViewer();
         boolean found = false;
 
         if (editWord.equalsIgnoreCase("c")) {

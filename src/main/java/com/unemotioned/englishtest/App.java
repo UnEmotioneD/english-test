@@ -1,6 +1,6 @@
 package com.unemotioned.englishtest;
 
-import com.unemotioned.englishtest.controller.MenuController;
+import com.unemotioned.englishtest.menu.controller.MenuController;
 
 public class App {
     void main() {

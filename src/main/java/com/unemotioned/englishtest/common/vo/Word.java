@@ -1,4 +1,4 @@
-package com.unemotioned.englishtest.model.vo;
+package com.unemotioned.englishtest.common.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
