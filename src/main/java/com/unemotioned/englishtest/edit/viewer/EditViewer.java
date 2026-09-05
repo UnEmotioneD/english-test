@@ -1,7 +1,6 @@
 package com.unemotioned.englishtest.edit.viewer;
 
 import com.unemotioned.englishtest.common.vo.Word;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EditViewer {
@@ -44,5 +43,4 @@ public class EditViewer {
         System.out.print("=> ");
         return sc.next();
     }
-
 }

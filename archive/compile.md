@@ -1,6 +1,6 @@
 # Compilation
 
-Archived after switching to maven.
+Build and run Java without build tools.
 
 ---
 
@@ -9,7 +9,7 @@ Archived after switching to maven.
 - `find src -name "*.java"`: find all Java files
 - `-d out`: compiled `.class` files into `out/` directory
 
-```bash
+```sh
 javac -d out $(find src -name "*.java")
 ```
 
@@ -18,13 +18,13 @@ javac -d out $(find src -name "*.java")
 - `Start`: Java file with `psvm`
 - `-cp`: classpath points to out which runs the compiled files
 
-```bash
+```sh
 java -cp out kr.or.iei.start.Start
 ```
 
 ### One Liner
 
-```bash
+```sh
 javac -d out $(find src -name "*.java") && java -cp out kr.or.iei.start.Start
 ```
 
@@ -36,7 +36,7 @@ After [compile](#compile).
 
 Creates `.jar` file at **bin** directory:
 
-```bash
+```sh
 jar --create \
     --file bin/english-test.jar \
     --main-class kr.or.iei.start.Start \
@@ -45,6 +45,6 @@ jar --create \
 
 Run created `.jar` file:
 
-```bash
+```sh
 java -jar bin/english-test.jar
 ```

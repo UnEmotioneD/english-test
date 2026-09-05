@@ -2,14 +2,13 @@ package com.unemotioned.englishtest.menu.controller;
 
 import com.unemotioned.englishtest.common.Config;
 import com.unemotioned.englishtest.common.Util;
-import com.unemotioned.englishtest.search.controller.SearchController;
-import com.unemotioned.englishtest.exam.controller.ExamController;
-import com.unemotioned.englishtest.edit.controller.EditController;
 import com.unemotioned.englishtest.common.vo.Word;
+import com.unemotioned.englishtest.edit.controller.EditController;
+import com.unemotioned.englishtest.exam.controller.ExamController;
 import com.unemotioned.englishtest.menu.viewer.MenuViewer;
-import lombok.Getter;
-
+import com.unemotioned.englishtest.search.controller.SearchController;
 import java.util.ArrayList;
+import lombok.Getter;
 
 public class MenuController {
     MenuViewer mViewer;

@@ -2,9 +2,9 @@ package com.unemotioned.englishtest.exam.controller;
 
 import com.unemotioned.englishtest.common.Config;
 import com.unemotioned.englishtest.common.Util;
-import com.unemotioned.englishtest.menu.controller.MenuController;
 import com.unemotioned.englishtest.common.vo.Word;
 import com.unemotioned.englishtest.exam.viewer.ExamViewer;
+import com.unemotioned.englishtest.menu.controller.MenuController;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
