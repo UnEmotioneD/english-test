@@ -1,0 +1,21 @@
+{
+  "languages": {
+    "Java": {
+      "language_servers": [
+        "jdtls"
+      ]
+    }
+  },
+  "lsp": {
+    "jdtls": {
+      "initialization_options": {
+        "settings": {
+          "java": {
+            "home": "/opt/homebrew/opt/openjdk@25/libexec/openjdk.jdk/Contents/Home"
+          },
+          "lombok_support": true
+        }
+      }
+    }
+  }
+}
