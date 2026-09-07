@@ -35,6 +35,10 @@ public class EditController {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(Config.WORD_FILE, true))) {
             Word word = editViewer.add();
 
+            if (word == null) {
+                return;
+            }
+
             boolean isDup = checkDup(word.getWord().toLowerCase());
             if (isDup) {
                 editViewer.printDup(word.getWord());

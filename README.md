@@ -90,7 +90,7 @@
 
 - [x] get inputs of 1 word and 2 definitions
 - [x] check duplication before adding
-- [ ] option to cancel add
+- [x] option to cancel add
 
 ### Test
 
