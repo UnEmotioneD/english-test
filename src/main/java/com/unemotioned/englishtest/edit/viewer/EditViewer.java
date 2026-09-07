@@ -23,6 +23,10 @@ public class EditViewer {
         return newWord;
     }
 
+    public void printDup(String word) {
+        System.out.println("The word: " + word + " is already saved.");
+    }
+
     public void addSuccess() {
         System.out.println("New word added successfully!");
     }

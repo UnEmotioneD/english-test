@@ -20,10 +20,27 @@ public class EditController {
         editViewer = new EditViewer();
     }
 
-    // TODO: check duplication before adding
+    private boolean checkDup(String word) {
+        for (Word foo : menuCon.getWordList()) {
+            String wordFromFile = foo.getWord();
+
+            if (wordFromFile.equalsIgnoreCase(word)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void add() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(Config.WORD_FILE, true))) {
             Word word = editViewer.add();
+
+            boolean isDup = checkDup(word.getWord().toLowerCase());
+            if (isDup) {
+                editViewer.printDup(word.getWord());
+                return;
+            }
+
             bw.newLine();
             bw.write(word.getWord() + "/" + word.getDef1() + "/" + word.getDef2());
             editViewer.addSuccess();
