@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Util {
+
     public ArrayList<Word> readFile(String fileName) {
         ArrayList<Word> list = new ArrayList<>();
 
@@ -15,6 +16,11 @@ public class Util {
             String line;
 
             while ((line = br.readLine()) != null) {
+
+                if (line.isBlank()) {
+                    continue;
+                }
+
                 // split line by slash
                 // put it into String arr
                 // construct Word object with it
