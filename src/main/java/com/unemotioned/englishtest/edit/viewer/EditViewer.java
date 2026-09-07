@@ -10,20 +10,10 @@ public class EditViewer {
         sc = new Scanner(System.in);
     }
 
-    public String newWord() {
-        System.out.print("New Word: ");
-        return sc.next();
-    }
-
-    public void dupWord() {
-        System.out.println("Duplicated Word.");
-    }
-
     public Word add() {
         Word newWord = new Word();
 
-        System.out.println();
-        System.out.print("Enter new word: ");
+        System.out.print("\nEnter new word: ");
         newWord.setWord(sc.next());
         System.out.print("Definition (1/2): ");
         newWord.setDef1(sc.next());
@@ -41,6 +31,7 @@ public class EditViewer {
         System.out.println("Search word to edit / delete");
         System.out.println("Delete all / Cancel (a/c)");
         System.out.print("=> ");
+
         return sc.next();
     }
 }

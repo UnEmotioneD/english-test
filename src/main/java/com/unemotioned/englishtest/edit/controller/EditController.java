@@ -20,19 +20,6 @@ public class EditController {
         editViewer = new EditViewer();
     }
 
-    public void newWord() {
-        String newWord = editViewer.newWord();
-
-        for (Word word : menuCon.getWordList()) {
-            if (word.getWord().equalsIgnoreCase(newWord)) {
-                editViewer.dupWord();
-                return;
-            } else {
-                // TODO: get two different definitions
-            }
-        }
-    }
-
     // TODO: check duplication before adding
     public void add() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(Config.WORD_FILE, true))) {
