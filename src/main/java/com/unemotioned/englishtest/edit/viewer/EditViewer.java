@@ -17,12 +17,12 @@ public class EditViewer {
         System.out.println("Cancel (C)");
 
         System.out.print("\nEnter new word: ");
-        if (sc.next().equals("C")) {
-            System.out.println("Canceling search...\n");
+        String input = sc.next();
+        if (input.equals("C")) {
+            System.out.println("Cancel adding new word...\n");
             return null;
-        } else {
-            newWord.setWord(sc.next());
         }
+        newWord.setWord(input);
 
         System.out.print("Definition (1/2): ");
         newWord.setDef1(sc.next());
